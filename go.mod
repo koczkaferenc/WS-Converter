@@ -3,6 +3,7 @@ module ws-updater
 go 1.25.5
 
 require (
+	github.com/gocarina/gocsv v0.0.0-20240520201108-78e41c74b4b1 // indirect
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
 	github.com/nakagami/chacha20 v0.1.0 // indirect
 	github.com/nakagami/firebirdsql v0.9.15 // indirect
