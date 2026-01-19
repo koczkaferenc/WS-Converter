@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"ws-updater/db" // Cseréld a saját projektnevedre
+	"ws-updater/db"
 )
 
 func main() {
