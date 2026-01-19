@@ -1,0 +1,9 @@
+docker run --rm -d \
+  --name firebird-25 \
+  -p 3050:3050 \
+  -e ISC_PASSWORD=masterkey \
+  -e FIREBIRD_PASSWORD=masterkey \
+  -v "$(pwd)/data":/firebird/data \
+    jacobalberty/firebird:2.5-sc
+
+# jdbc:firebirdsql://localhost:3050//firebird/data/KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?encoding=UTF8
