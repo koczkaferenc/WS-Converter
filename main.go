@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"regexp"
 	"ws-updater/db"
@@ -34,12 +35,12 @@ var (
 	regExpGLPSZMOFA = regexp.MustCompile(`N-GLPSZ-[0-9]+-([0-9ABC]+)([123])_MOFA$`)
 	regExpGLHOKMOFA = regexp.MustCompile(`N-GLHOK-[0-9]+-([0-9ABC]+)([123])_MOFA$`)
 
-	// ITT TARTUNK
-
 	// Velo
 	regExpGLVELO    = regexp.MustCompile(`N-GL-[0-9]+-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 	regExpGLPSZVELO = regexp.MustCompile(`N-GLPSZ-[0-9]+-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 	regExpGLHOKVELO = regexp.MustCompile(`N-GLHOK-[0-9]+-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+
+	// ITT TARTUNK
 
 	// Csőcsapos lánc
 	regExpCSCSGL    = regexp.MustCompile(`N-CSCSGL-[0-9]+-([0-9ABC]+)1$`)
@@ -106,13 +107,15 @@ func main() {
 	var webProducts []models.WsProduct
 	products := db.FetchProducts()
 	for _, p := range products {
-		//fmt.Printf("%s\n", p.Code)
+		fmt.Printf("%s\n", p.Code)
 		switch {
 		// GL
 		case regExpGL.MatchString(p.Code),
 			regExpSSGL.MatchString(p.Code),
 			regExpGL_H.MatchString(p.Code),
-			regExpGLMOFA.MatchString(p.Code):
+			regExpGLMOFA.MatchString(p.Code),
+			regExpGLVELO.MatchString(p.Code),
+			regExpCSCSGL.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGl(p))
 		// GLPSZ
 		case regExpGLPSZ.MatchString(p.Code),
@@ -123,7 +126,10 @@ func main() {
 			regExpSSGLSPSZ.MatchString(p.Code),
 			regExpGLHOK.MatchString(p.Code),
 			regExpGLHOK_H.MatchString(p.Code),
-			regExpSSGLHOK.MatchString(p.Code):
+			regExpSSGLHOK.MatchString(p.Code),
+			regExpGLPSZVELO.MatchString(p.Code),
+			regExpGLHOKVELO.MatchString(p.Code),
+			regExpCSCSGLPSZ.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGlPsz(p))
 			//default:
 			//	fmt.Printf("%s\n", p.Code)

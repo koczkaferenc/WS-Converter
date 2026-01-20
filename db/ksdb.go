@@ -40,7 +40,7 @@ func FetchProducts() []models.KsProduct {
 		    AND PRP."Currency" = 257
 		    AND (PRP."ValidFrom" IS NULL OR PRP."ValidFrom" <= CURRENT_TIMESTAMP)
 		    AND (PRP."ValidTo" IS NULL OR PRP."ValidTo" >= CURRENT_TIMESTAMP)
-		WHERE PR."Code" LIKE 'N-%'
+		WHERE PR."Code" LIKE 'N-%CSCS%'
 		GROUP BY 1, 2, 3, 4, 6
 		HAVING MAX(PRP."Price") > 0
 		ORDER BY "Weight"`

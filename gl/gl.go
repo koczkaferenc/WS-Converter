@@ -72,62 +72,62 @@ var GLParms = map[string]map[string]string{
 	"04B1": {"Osztas": "6", "Belsoheveder": "2,8", "Csapatmero": "1,85", "Gorgoatmero": "4", "Csaphossz": "7,8"},
 	"05B1": {"Osztas": "8", "Belsoheveder": "3", "Csapatmero": "2,31", "Gorgoatmero": "5", "Csaphossz": "11,7"},
 	"06B1": {"Osztas": "9,525", "Belsoheveder": "5,72", "Csapatmero": "3,28", "Gorgoatmero": "6,35", "Csaphossz": "16,8"},
-	"08B1": {"Osztas": "12,", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "20,9"},
+	"08B1": {"Osztas": "12", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "20,9"},
 	"10B1": {"Osztas": "15,875", "Belsoheveder": "9,65", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "23,7"},
 	"12B1": {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "5,72", "Gorgoatmero": "12,07", "Csaphossz": "27,3"},
-	"16B1": {"Osztas": "25,", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "41,5"},
-	"20B1": {"Osztas": "31,75", "Belsoheveder": "19,56", "Csapatmero": "10,19", "Gorgoatmero": "19,05", "Csaphossz": "46,"},
-	"24B1": {"Osztas": "38,", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "58,5"},
+	"16B1": {"Osztas": "25", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "41,5"},
+	"20B1": {"Osztas": "31,75", "Belsoheveder": "19,56", "Csapatmero": "10,19", "Gorgoatmero": "19,05", "Csaphossz": "46"},
+	"24B1": {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "58,5"},
 	"28B1": {"Osztas": "44,45", "Belsoheveder": "30,99", "Csapatmero": "15,9", "Gorgoatmero": "27,94", "Csaphossz": "69,6"},
-	"32B1": {"Osztas": "50,", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "73,1"},
-	"40B1": {"Osztas": "63,", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "86,3"},
-	"48B1": {"Osztas": "76,", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "107,9"},
-	"56B1": {"Osztas": "88,", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "137"},
-	"64B1": {"Osztas": "101,", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "138,5"},
-	"72B1": {"Osztas": "114,", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "156,4"},
+	"32B1": {"Osztas": "50", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "73,1"},
+	"40B1": {"Osztas": "63", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "86,3"},
+	"48B1": {"Osztas": "76", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "107,9"},
+	"56B1": {"Osztas": "88", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "137"},
+	"64B1": {"Osztas": "101", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "138,5"},
+	"72B1": {"Osztas": "114", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "156,4"},
 
 	"05B2": {"Osztas": "8", "Belsoheveder": "3", "Csapatmero": "2,31", "Gorgoatmero": "5", "Csaphossz": "17,4"},
 	"06B2": {"Osztas": "9,525", "Belsoheveder": "5,72", "Csapatmero": "3,28", "Gorgoatmero": "6,35", "Csaphossz": "27,1"},
-	"08B2": {"Osztas": "12,", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "34,9"},
+	"08B2": {"Osztas": "12", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "34,9"},
 	"10B2": {"Osztas": "15,875", "Belsoheveder": "9,65", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "40,3"},
 	"12B2": {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "5,72", "Gorgoatmero": "12,07", "Csaphossz": "46,8"},
-	"16B2": {"Osztas": "25,", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "73,4"},
+	"16B2": {"Osztas": "25", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "73,4"},
 	"20B2": {"Osztas": "31,75", "Belsoheveder": "19,56", "Csapatmero": "10,19", "Gorgoatmero": "19,05", "Csaphossz": "82,5"},
-	"24B2": {"Osztas": "38,", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "106,9"},
+	"24B2": {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "106,9"},
 	"28B2": {"Osztas": "44,45", "Belsoheveder": "30,99", "Csapatmero": "15,9", "Gorgoatmero": "27,94", "Csaphossz": "129,2"},
-	"32B2": {"Osztas": "50,", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "131,7"},
-	"40B2": {"Osztas": "63,", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "158,6"},
-	"48B2": {"Osztas": "76,", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "199,1"},
-	"56B2": {"Osztas": "88,", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "243,6"},
-	"64B2": {"Osztas": "101,", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "258,4"},
-	"72B2": {"Osztas": "114,", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "292,7"},
+	"32B2": {"Osztas": "50", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "131,7"},
+	"40B2": {"Osztas": "63", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "158,6"},
+	"48B2": {"Osztas": "76", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "199,1"},
+	"56B2": {"Osztas": "88", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "243,6"},
+	"64B2": {"Osztas": "101", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "258,4"},
+	"72B2": {"Osztas": "114", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "292,7"},
 
 	"05B3": {"Osztas": "8", "Belsoheveder": "3", "Csapatmero": "2,31", "Gorgoatmero": "5", "Csaphossz": "23"},
 	"06B3": {"Osztas": "9,525", "Belsoheveder": "5,72", "Csapatmero": "3,28", "Gorgoatmero": "6,35", "Csaphossz": "37,3"},
-	"08B3": {"Osztas": "12,", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "48,8"},
+	"08B3": {"Osztas": "12", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "48,8"},
 	"10B3": {"Osztas": "15,875", "Belsoheveder": "9,65", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "56,9"},
 	"12B3": {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "5,72", "Gorgoatmero": "12,07", "Csaphossz": "66,3"},
-	"16B3": {"Osztas": "25,", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "105,3"},
+	"16B3": {"Osztas": "25", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "105,3"},
 	"20B3": {"Osztas": "31,75", "Belsoheveder": "19,56", "Csapatmero": "10,19", "Gorgoatmero": "19,05", "Csaphossz": "118,9"},
-	"24B3": {"Osztas": "38,", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "155,2"},
+	"24B3": {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "155,2"},
 	"28B3": {"Osztas": "44,45", "Belsoheveder": "30,99", "Csapatmero": "15,9", "Gorgoatmero": "27,94", "Csaphossz": "188,8"},
-	"32B3": {"Osztas": "50,", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "190,2"},
-	"40B3": {"Osztas": "63,", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "230,9"},
-	"48B3": {"Osztas": "76,", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "293,3"},
-	"56B3": {"Osztas": "88,", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "350,2"},
-	"64B3": {"Osztas": "101,", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "378,3"},
-	"72B3": {"Osztas": "114,", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "429,"},
+	"32B3": {"Osztas": "50", "Belsoheveder": "30,99", "Csapatmero": "17,81", "Gorgoatmero": "29,21", "Csaphossz": "190,2"},
+	"40B3": {"Osztas": "63", "Belsoheveder": "38,1", "Csapatmero": "22,89", "Gorgoatmero": "39,37", "Csaphossz": "230,9"},
+	"48B3": {"Osztas": "76", "Belsoheveder": "45,72", "Csapatmero": "29,24", "Gorgoatmero": "48,26", "Csaphossz": "293,3"},
+	"56B3": {"Osztas": "88", "Belsoheveder": "53,34", "Csapatmero": "34,32", "Gorgoatmero": "53,98", "Csaphossz": "350,2"},
+	"64B3": {"Osztas": "101", "Belsoheveder": "60,96", "Csapatmero": "39,4", "Gorgoatmero": "63,5", "Csaphossz": "378,3"},
+	"72B3": {"Osztas": "114", "Belsoheveder": "68,58", "Csapatmero": "44,48", "Gorgoatmero": "72,39", "Csaphossz": "429"},
 
 	"04BH":   {"Osztas": "6", "Belsoheveder": "2,8", "Csapatmero": "1,85", "Gorgoatmero": "4", "Csaphossz": "9,4"},
 	"06BH":   {"Osztas": "9,525", "Belsoheveder": "5,72", "Csapatmero": "3,58", "Gorgoatmero": "6,35", "Csaphossz": "15,4"},
-	"08BH":   {"Osztas": "12,", "Belsoheveder": "7,85", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "19,9"},
+	"08BH":   {"Osztas": "12", "Belsoheveder": "7,85", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "19,9"},
 	"10BH":   {"Osztas": "15,875", "Belsoheveder": "9,65", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "21,6"},
 	"12BH":   {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "5,94", "Gorgoatmero": "12,07", "Csaphossz": "26,8"},
 	"12BV":   {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "6,1", "Gorgoatmero": "12,07", "Csaphossz": "26,5"},
 	"12BHF2": {"Osztas": "19,05", "Belsoheveder": "13,5", "Csapatmero": "5,72", "Gorgoatmero": "12,07", "Csaphossz": "30,3"},
-	"16BH":   {"Osztas": "25,", "Belsoheveder": "17,02", "Csapatmero": "8,9", "Gorgoatmero": "15,88", "Csaphossz": "38,9"},
-	"24BH":   {"Osztas": "38,", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "63,4"},
-	"24BHF2": {"Osztas": "38,", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "62,2"},
+	"16BH":   {"Osztas": "25", "Belsoheveder": "17,02", "Csapatmero": "8,9", "Gorgoatmero": "15,88", "Csaphossz": "38,9"},
+	"24BH":   {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "63,4"},
+	"24BHF2": {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "62,2"},
 
 	"208A1":  {"Osztas": "25,4", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "17,8"},
 	"208B1":  {"Osztas": "25,4", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "18,2"},
@@ -155,7 +155,7 @@ var GLParms = map[string]map[string]string{
 	"0831":  {"Osztas": "12,7", "Belsoheveder": "4,88", "Csapatmero": "4,09", "Gorgoatmero": "7,75", "Csaphossz": "12,9"},
 	"0861":  {"Osztas": "12,7", "Belsoheveder": "5,3", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "15,9"},
 	"1011":  {"Osztas": "15,88", "Belsoheveder": "6,48", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "17,2"},
-	"411":   {"Osztas": "12,7", "Belsoheveder": "6,25", "Csapatmero": "3,58", "Gorgoatmero": "7,77", "Csaphossz": "15,"},
+	"411":   {"Osztas": "12,7", "Belsoheveder": "6,25", "Csapatmero": "3,58", "Gorgoatmero": "7,77", "Csaphossz": "15"},
 	"04B2":  {"Osztas": "", "Belsoheveder": "", "Csapatmero": "", "Gorgoatmero": "", "Csaphossz": ""},
 
 	// VELO
@@ -176,103 +176,130 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		regExpSSGL = regexp.MustCompile(`N-(SSGL)-([0-9]+)-([0-9ABC]+)([0-9])$`)
 		regExpGL_H = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])_H$`)
 		// Mofa
-		regExpGLMOFA   = regexp.MustCompile(`N-GL-([0-9]+)-([0-9ABC]+)([123])_MOFA(_[0-9]+)?$`)
+		regExpGLMOFA = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])_MOFA(_[0-9]+)?$`)
+		// VELO görgőslánc
+		regExpGLVELO = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+		// CSCS
+		regExpCSCSGL = regexp.MustCompile(`N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$`)
+
 		match          []string
-		category       string
+		family         string
 		manufacturerId int
 		numOfRows      string
 		chainType      string
 	)
 	w := models.WsProduct{}
 
-	// Görgőslánc: N-GL-5-24B3
-	match = regExpGL.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Image = fmt.Sprintf("product/N-GL-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GL-%s.png", numOfRows)
-	}
-
-	// Rozsdamentes görgőslánc
-	match = regExpSSGL.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Rozsdamentes"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Image = fmt.Sprintf("product/N-SSGL-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-SSGL-%s.png", numOfRows)
-	}
-
-	// Heavy
-	match = regExpGL_H.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Heavy (erősített)" // Heavy
-		w.Image = fmt.Sprintf("product/N-GL-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GL-%s.png", numOfRows)
-	}
-
-	// Mofa
-	match = regExpGLMOFA.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Name = fmt.Sprintf("%s MOFA Görgőslánc", chainType)
-		w.Anyag = "Acél"
-		w.Kivitel = "Normál" // Heavy
-		w.Image = fmt.Sprintf("product/N-GL-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GL-%s.png", numOfRows)
-	}
-
+	// Az alapmodell paraméterei, ezeket írjuk felül az egyes típusoknál.
 	w.SKU = p.Code
-	if w.Name == "" {
-		w.Name = fmt.Sprintf("%s Görgőslánc", chainType)
-	}
-	w.Weight = fmt.Sprintf("%.1f", p.Weight)
-	w.WeightClass = "kg."
+	w.Anyag = "Acél"
+	w.Kivitel = "Normál"    // Normál | Heavy (erősített)
+	w.Csaptipus = "Tömör"   // Tömör | Csőcsapos
+	w.Szemforma = "Piskóta" // Piskóta | Párhuzamos profilú | Hajlított
 	w.Category = "Görgőslácok"
 	w.ClassId = "Görgőslánc"
-	w.Manufacturer = models.Manufacturers[manufacturerId]
-
-	w.Osztas = GLParms[chainType]["Osztas"]
-	w.BelsoHeveder = GLParms[chainType]["Belsoheveder"]
-	w.GorgoAtmero = GLParms[chainType]["Gorgoatmero"]
-	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
-	w.CsapHossz = GLParms[chainType]["Csaphossz"]
-	w.Csaptipus = "Tömör"
-
-	w.Szemforma = "Piskóta" // Nem párhzamos profilú
-	w.ShortDescription = fmt.Sprintf("%s gyártmányú %s soros, %s mm. osztású, %s mm belső hevedertávolságú, %s mm. görgőátmérőjű %s %s görgőslánc.", w.Manufacturer, numOfRows, w.Osztas, w.BelsoHeveder, w.GorgoAtmero, strings.ToLower(w.Kivitel), strings.ToLower(w.Anyag))
-
 	w.Quantity = fmt.Sprintf("%.1f", p.Stock)
 	w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
 	w.TaxClass = "27%"
 	w.QuantityUnit = p.Unit
+	w.Weight = fmt.Sprintf("%.1f", p.Weight)
+	w.WeightClass = "kg."
 
 	// Ha nincs belőle raktáron, nem elérhető.
 	qty, _ := strconv.ParseFloat(w.Quantity, 64)
 	if qty == 0 {
 		w.ShortDescription += models.JelenlegNemElerheto
 	} else {
-		if slices.Contains(models.CsakRendelesre, category) {
+		if slices.Contains(models.CsakRendelesre, family) {
 			w.ShortDescription += models.CsakRendelesreLeiras
 		}
 	}
 	w.ShortDescription += models.Zaradek
+
+	// Görgőslánc: N-GL-5-24B3
+	match = regExpGL.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+	}
+
+	// Rozsdamentes görgőslánc
+	match = regExpSSGL.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Anyag = "Rozsdamentes"
+	}
+
+	// Heavy
+	match = regExpGL_H.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Kivitel = "Heavy (erősített)" // Heavy
+	}
+
+	// Mofa
+	match = regExpGLMOFA.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Name = fmt.Sprintf("%s MOFA Görgőslánc", chainType)
+	}
+
+	// Velo
+	// regExpGLVELO = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+	match = regExpGLVELO.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1" // Velo mindig egysoros
+		chainType = fmt.Sprintf("%s", match[3])
+
+		w.Name = fmt.Sprintf("%s VELO Görgőslánc", chainType)
+	}
+
+	// Csőcsapos
+	// regExpCSCSGL = regexp.MustCompile(`N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$`)
+	match = regExpCSCSGL.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1" // Mindig egysoros
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Csaptipus = "Csőcsapos"
+	}
+
+	w.Manufacturer = models.Manufacturers[manufacturerId]
+	if w.Name == "" {
+		w.Name = fmt.Sprintf("%s Görgőslánc", chainType) // 08B1 Görgőslánc
+	}
+	if w.Image == "" {
+		w.Image = fmt.Sprintf("product/N-%s-%s.png", family, numOfRows)
+	}
+	if w.ImageAdditional == "" {
+		w.ImageAdditional = fmt.Sprintf("product/D-%s-%s.png", family, numOfRows)
+	}
+
+	w.Osztas = GLParms[chainType]["Osztas"]
+	w.BelsoHeveder = GLParms[chainType]["Belsoheveder"]
+	w.GorgoAtmero = GLParms[chainType]["Gorgoatmero"]
+	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
+	w.CsapHossz = GLParms[chainType]["Csaphossz"]
+	w.ShortDescription = fmt.Sprintf("%s gyártmányú %s soros, %s mm. osztású, %s mm belső hevedertávolságú, %s mm. görgőátmérőjű %s %s görgőslánc.", w.Manufacturer, numOfRows, w.Osztas, w.BelsoHeveder, w.GorgoAtmero, strings.ToLower(w.Kivitel), strings.ToLower(w.Anyag))
+
 	return w
 }
 
@@ -301,207 +328,216 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		regExpGLPSZMOFA = regexp.MustCompile(`N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_MOFA$`)
 		// Hajlított MOFA
 		regExpGLHOKMOFA = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_MOFA$`)
+		// VELO Patentszem
+		regExpGLPSZVELO = regexp.MustCompile(`N-(GLPSZ)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+		// VELO Hajlított
+		regExpGLHOKVELO = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+		// Csőcsapos
+		regExpCSCSGLPSZ = regexp.MustCompile(`N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$`)
 
 		match          []string
-		category       string
+		family         string
 		manufacturerId int
 		numOfRows      string
 		chainType      string
 	)
 	w := models.WsProduct{}
-
-	// GLPSZ: 1,2 és 3 soros görgősláncok lemezes patentszemei
-	match = regExpGLPSZ.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Lemezes"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", numOfRows)
-	}
-
-	// Heavy
-	match = regExpGLPSZ_H.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Heavy (erősített)" // Heavy
-		w.Rogzites = "Lemezes"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", numOfRows)
-	}
-
-	// Sasszeges, normál
-	match = regExpGLSPSZ.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Sasszeges"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-GLSPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLSPSZ-%s.png", numOfRows)
-	}
-
-	//  Rozsdamentes görgőslánc patentszem rugós lemezes
-	match = regExpSSGLPSZ.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Rozsdamentes"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Lemezes"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-SSGLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-SSGLPSZ-%s.png", numOfRows)
-	}
-
-	//  Rozsdamentes görgőslánc patentszem sasszeges
-	match = regExpSSGLSPSZ.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Rozsdamentes"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Sasszeges"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-SSGLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-SSGLPSZ-%s.png", numOfRows)
-	}
-
-	// görgősláncok sasszeges hajlított patentszemei
-	match = regExpGLHOK.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
-		w.Csaptipus = "Tömör"
-		w.Image = fmt.Sprintf("product/N-GLHOK-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLHOK-%s.png", numOfRows)
-	}
-
-	// erősített görgősláncok rugós sasszeges hajlított patentszemei
-	match = regExpGLHOK_H.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Kivitel = "Heavy (erősített)" // Heavy
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
-		w.Csaptipus = "Tömör"
-		w.Image = fmt.Sprintf("product/N-GLHOK-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLHOK-%s.png", numOfRows)
-	}
-
-	// rozsdamentes görgősláncok rugós sasszeges hajlított patentszemei
-	match = regExpSSGLHOK.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Rozsdamentes"
-		w.Kivitel = "Normál" // Nem heavy
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
-		w.Csaptipus = "Tömör"
-		w.Image = fmt.Sprintf("product/N-SSGLHOK-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-SSGLHOK-%s.png", numOfRows)
-	}
-
-	// GLPSZ MOFA
-	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_MOFA$
-	match = regExpGLPSZMOFA.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Lemezes"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "Piskóta" // Nem párhzamos profilú
-		w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", numOfRows)
-	}
-
-	// Hajlított MOFA
-	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_MOFA$
-	match = regExpGLHOKMOFA.FindStringSubmatch(p.Code)
-	if match != nil {
-		category = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
-		w.Anyag = "Acél"
-		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
-		w.Kivitel = "Normál" // Nem heavy
-		w.Rogzites = "Lemezes"
-		w.Csaptipus = "Tömör"
-		w.Szemforma = "hajlított"
-		w.Image = fmt.Sprintf("product/N-GLHOK-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLHOK-%s.png", numOfRows)
-	}
-
+	// Általános tulajdonságok
 	w.SKU = p.Code
-	if w.Name == "" {
-		w.Name = fmt.Sprintf("%s %s Patentszem", chainType, w.Anyag)
-	}
-	w.Weight = fmt.Sprintf("%.1f", p.Weight)
+	w.Anyag = "Acél"
+	w.Kivitel = "Normál"    // Normál | Heavy
+	w.Rogzites = "Lemezes"  // Lemezes | Sasszeges
+	w.Csaptipus = "Tömör"   // Tömör | Csőcsapos
+	w.Szemforma = "Piskóta" // Piskóta | Párhuzamos Profilú | Hajlított
 	w.WeightClass = "kg."
 	w.Category = "Patentszemek"
 	w.ClassId = "Görgőslánc"
-	w.Manufacturer = models.Manufacturers[manufacturerId]
-	w.Osztas = GLParms[chainType]["Osztas"]
-	w.CsapHossz = GLParms[chainType]["Csaphossz"]
-	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
-	w.ShortDescription = fmt.Sprintf("%s: {rows} soros %s rögzítésű %s %s patentszem %s csappal. Osztás: %s mm., csaphosszúság: %s mm., csapátmérő: %s mm.", w.Manufacturer, numOfRows, strings.ToLower(w.Rogzites), strings.ToLower(w.Szemforma), strings.ToLower(w.Anyag), strings.ToLower(w.Csaptipus), w.Osztas, w.CsapHossz, w.CsapAtmero)
-
 	w.Quantity = fmt.Sprintf("%.1f", p.Stock)
 	w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
 	w.TaxClass = "27%"
 	w.QuantityUnit = p.Unit
+	w.Weight = fmt.Sprintf("%.1f", p.Weight)
 
 	// Ha nincs belőle raktáron, nem elérhető.
 	qty, _ := strconv.ParseFloat(w.Quantity, 64)
 	if qty == 0 {
 		w.ShortDescription += models.JelenlegNemElerheto
 	} else {
-		if slices.Contains(models.CsakRendelesre, category) {
+		if slices.Contains(models.CsakRendelesre, family) {
 			w.ShortDescription += models.CsakRendelesreLeiras
 		}
 	}
 	w.ShortDescription += models.Zaradek
+
+	// GLPSZ: 1,2 és 3 soros görgősláncok lemezes patentszemei
+	match = regExpGLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+	}
+
+	// Heavy
+	match = regExpGLPSZ_H.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Kivitel = "Heavy (erősített)"
+	}
+
+	// Sasszeges, normál
+	match = regExpGLSPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Rogzites = "Sasszeges"
+	}
+
+	//  Rozsdamentes görgőslánc patentszem rugós lemezes
+	match = regExpSSGLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Anyag = "Rozsdamentes"
+	}
+
+	//  Rozsdamentes görgőslánc patentszem sasszeges
+	match = regExpSSGLSPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Anyag = "Rozsdamentes"
+		w.Rogzites = "Sasszeges"
+	}
+
+	// görgősláncok sasszeges hajlított patentszemei
+	match = regExpGLHOK.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Szemforma = "Hajlított"
+		w.Rogzites = "Sasszeges"
+	}
+
+	// erősített görgősláncok rugós sasszeges hajlított patentszemei
+	match = regExpGLHOK_H.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Kivitel = "Heavy (erősített)" // Heavy
+		w.Szemforma = "Hajlított"
+		w.Rogzites = "Sasszeges"
+	}
+
+	// rozsdamentes görgősláncok rugós sasszeges hajlított patentszemei
+	match = regExpSSGLHOK.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		w.Anyag = "Rozsdamentes"
+		w.Szemforma = "Hajlított"
+		w.Rogzites = "Sasszeges"
+	}
+
+	// GLPSZ MOFA
+	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_MOFA$
+	match = regExpGLPSZMOFA.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
+
+		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
+	}
+
+	// Hajlított MOFA
+	// N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_MOFA$
+	match = regExpGLHOKMOFA.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
+
+		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
+		w.Szemforma = "hajlított"
+	}
+
+	// GLPSZ VELO
+	// N-(GLPSZ)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$
+	match = regExpGLPSZVELO.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1" // Velo mindig egysoros
+		chainType = fmt.Sprintf("%s", match[3])
+		w.Name = fmt.Sprintf("%s %s VELO Patentszem", chainType, w.Anyag)
+		w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", numOfRows)
+		w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", numOfRows)
+	}
+
+	// Hajlított VELO
+	// N-(GLHOK)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$
+	match = regExpGLHOKVELO.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1" // Velo mindig egysoros
+		chainType = fmt.Sprintf("%s", match[3])
+
+		w.Name = fmt.Sprintf("%s %s VELO Patentszem", chainType, w.Anyag)
+		w.Szemforma = "hajlított"
+	}
+
+	// regExpCSCSGLPSZ = regexp.MustCompile(`N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$`)
+	// Csőcsapos patentszem
+	match = regExpCSCSGLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1" // Mindig egysoros
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Csaptipus = "Csőcsapos"
+	}
+
+	if w.Name == "" {
+		w.Name = fmt.Sprintf("%s %s Patentszem", chainType, w.Anyag)
+	}
+	if w.Image == "" {
+		w.Image = fmt.Sprintf("product/N-%s-%s.png", family, numOfRows)
+	}
+	if w.ImageAdditional == "" {
+		w.ImageAdditional = fmt.Sprintf("product/D-%s-%s.png", family, numOfRows)
+	}
+
+	w.Manufacturer = models.Manufacturers[manufacturerId]
+	w.Osztas = GLParms[chainType]["Osztas"]
+	w.CsapHossz = GLParms[chainType]["Csaphossz"]
+	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
+	w.ShortDescription = fmt.Sprintf("%s %s soros %s rögzítésű %s %s patentszem %s csappal. Osztás: %s mm., csaphosszúság: %s mm., csapátmérő: %s mm.", w.Manufacturer, numOfRows, strings.ToLower(w.Rogzites), strings.ToLower(w.Szemforma), strings.ToLower(w.Anyag), strings.ToLower(w.Csaptipus), w.Osztas, w.CsapHossz, w.CsapAtmero)
+
 	return w
 }
