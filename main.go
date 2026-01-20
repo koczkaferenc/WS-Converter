@@ -6,6 +6,9 @@ import (
 	"regexp"
 	"ws-updater/db"
 	"ws-updater/gl"
+	"ws-updater/mgbf"
+	"ws-updater/csk"
+	"ws-updater/mggl"
 	"ws-updater/models"
 
 	"github.com/gocarina/gocsv"
@@ -49,16 +52,19 @@ var (
 	regExpPPGL    = regexp.MustCompile(`N-PPGL-[0-9]+-([0-9ABC]+)([1-3])$`)
 	regExpPPGLPSZ = regexp.MustCompile(`N-PPGLPSZ-[0-9]+-([0-9ABC]+)1$`)
 
-	// ITT TARTUNK
-
 	// Csapkinyomó
 	regExpCSK = regexp.MustCompile(`N-CSK-[0-9]+-([0-9]+)-([0-9]+)$`)
+
+	// Mezőgazdasági lánc
+	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
+
+
+	// ITT TARTUNK
 
 	// Boronafog
 	regExpMGBF = regexp.MustCompile(`N-MGBF([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
 
-	// Mezőgazdasági lánc
-	regExpMGGL = regexp.MustCompile(`N-MGGL([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
+
 
 	// Agyas lánckerék
 	regExpKR   = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
@@ -144,6 +150,17 @@ func main() {
 			regExpPPGLPSZ.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGlPsz(p))
 			processed++
+		// Csapkinyom
+		case regExpCSK.MatchString(p.Code):
+			webProducts = append(webProducts, csk.ProcessCsk(p))
+			processed++
+		case regExpMGBF.MatchString(p.Code):
+			webProducts = append(webProducts, mgbf.ProcessMgbf(p))
+			processed++
+		case regExpMGGL.MatchString(p.Code):
+			webProducts = append(webProducts, mggl.ProcessMggl(p))
+			processed++
+
 		default:
 			w.WriteString(p.Code + "\n")
 			ignored++
