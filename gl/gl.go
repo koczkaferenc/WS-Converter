@@ -172,10 +172,13 @@ var GLParms = map[string]map[string]string{
 
 func ProcessGl(p models.KsProduct) models.WsProduct {
 	var (
+		// Alap görgőslánc
 		regExpGL   = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])$`)
+		// Rozsdamentes görgőslánc
 		regExpSSGL = regexp.MustCompile(`N-(SSGL)-([0-9]+)-([0-9ABC]+)([0-9])$`)
+		// Heavy görgőslánc
 		regExpGL_H = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])_H$`)
-		// Mofa
+		// Mofa görgőslánc
 		regExpGLMOFA = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])_MOFA(_[0-9]+)?$`)
 		// VELO görgőslánc
 		regExpGLVELO = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
@@ -217,6 +220,7 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	w.ShortDescription += models.Zaradek
 
 	// Görgőslánc: N-GL-5-24B3
+	// N-(GL)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -226,6 +230,7 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	}
 
 	// Rozsdamentes görgőslánc
+	// N-(SSGL)-([0-9]+)-([0-9ABC]+)([0-9])$
 	match = regExpSSGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -236,7 +241,8 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		w.Anyag = "Rozsdamentes"
 	}
 
-	// Heavy
+	// Heavy görgőslánc
+	// N-(GL)-([0-9]+)-([0-9ABC]+)([123])_H$
 	match = regExpGL_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -247,7 +253,8 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		w.Kivitel = "Heavy (erősített)" // Heavy
 	}
 
-	// Mofa
+	// Mofa görgőslánc
+	// N-(GL)-([0-9]+)-([0-9ABC]+)([123])_MOFA(_[0-9]+)?$
 	match = regExpGLMOFA.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -258,8 +265,8 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		w.Name = fmt.Sprintf("%s MOFA Görgőslánc", chainType)
 	}
 
-	// Velo
-	// regExpGLVELO = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
+	// Velo görgőslánc
+	// N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$
 	match = regExpGLVELO.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -271,7 +278,7 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	}
 
 	// Csőcsapos
-	// regExpCSCSGL = regexp.MustCompile(`N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$`)
+	// N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$
 	match = regExpCSCSGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -279,7 +286,7 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		numOfRows = "1" // Mindig egysoros
 		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
 
-		w.Csaptipus = "Csőcsapos"
+		w.Csaptipus = "Csőcsap"
 	}
 
 	w.Manufacturer = models.Manufacturers[manufacturerId]
@@ -318,11 +325,11 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		regExpSSGLPSZ = regexp.MustCompile(`N-(SSGLPSZ)-([0-9]+)-([0-9ABC]+)([123])$`)
 		// Rozsdamentes, sasszeges
 		regExpSSGLSPSZ = regexp.MustCompile(`N-(SSGLSPSZ)-([0-9]+)-([0-9ABC]+)([123])$`)
-		// görgősláncok sasszeges hajlított patentszemei (mindig sasszeges a hajlított)
+		// Sasszeges hajlított patentszem (a hajlított mindig sasszeges)
 		regExpGLHOK = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])$`)
-		// erősített görgősláncok rugós sasszeges hajlított patentszemei
+		// Erősített görgősláncok rugós sasszeges hajlított patentszem
 		regExpGLHOK_H = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_H$`)
-		// rozsdamentes görgősláncok rugós sasszeges hajlított patentszemei
+		// Rozsdamentes görgősláncok rugós sasszeges hajlított patentszemei
 		regExpSSGLHOK = regexp.MustCompile(`N-(SSGLHOK)-([0-9]+)-([0-9ABC]+)([123])$`)
 		// GLPSZ MOFA
 		regExpGLPSZMOFA = regexp.MustCompile(`N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_MOFA$`)
@@ -330,9 +337,9 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		regExpGLHOKMOFA = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_MOFA$`)
 		// VELO Patentszem
 		regExpGLPSZVELO = regexp.MustCompile(`N-(GLPSZ)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
-		// VELO Hajlított
+		// Hajlított VELO
 		regExpGLHOKVELO = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
-		// Csőcsapos
+		// Csőcsapos egyenes patentszem
 		regExpCSCSGLPSZ = regexp.MustCompile(`N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$`)
 
 		match          []string
@@ -369,7 +376,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	}
 	w.ShortDescription += models.Zaradek
 
-	// GLPSZ: 1,2 és 3 soros görgősláncok lemezes patentszemei
+	// Normál patetszem
+	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -378,7 +386,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
 	}
 
-	// Heavy
+	// Heavy patentszem
+	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])_H$
 	match = regExpGLPSZ_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -389,7 +398,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Kivitel = "Heavy (erősített)"
 	}
 
-	// Sasszeges, normál
+	// Sasszeges, normál patentszem
+	// N-(GLSPSZ)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGLSPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -400,7 +410,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Rogzites = "Sasszeges"
 	}
 
-	//  Rozsdamentes görgőslánc patentszem rugós lemezes
+	// Rozsdamentes görgőslánc patentszem rugós lemezes
+	// N-(SSGLPSZ)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpSSGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -411,7 +422,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Anyag = "Rozsdamentes"
 	}
 
-	//  Rozsdamentes görgőslánc patentszem sasszeges
+	// Rozsdamentes görgőslánc patentszem sasszeges
+	// N-(SSGLSPSZ)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpSSGLSPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -423,7 +435,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Rogzites = "Sasszeges"
 	}
 
-	// görgősláncok sasszeges hajlított patentszemei
+	// Sasszeges hajlított patentszem (a hajlított mindig sasszeges)
+	// N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGLHOK.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -435,7 +448,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Rogzites = "Sasszeges"
 	}
 
-	// erősített görgősláncok rugós sasszeges hajlított patentszemei
+	// Erősített görgőslánc rugós sasszeges hajlított patentszem
+	// N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_H$
 	match = regExpGLHOK_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -448,7 +462,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Rogzites = "Sasszeges"
 	}
 
-	// rozsdamentes görgősláncok rugós sasszeges hajlított patentszemei
+	// Rozsdamentes görgősláncok rugós sasszeges hajlított patentszeme
+	// N-(SSGLHOK)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpSSGLHOK.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -485,7 +500,7 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Szemforma = "hajlított"
 	}
 
-	// GLPSZ VELO
+	// VELO Patentszem
 	// N-(GLPSZ)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$
 	match = regExpGLPSZVELO.FindStringSubmatch(p.Code)
 	if match != nil {
@@ -511,8 +526,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		w.Szemforma = "hajlított"
 	}
 
-	// regExpCSCSGLPSZ = regexp.MustCompile(`N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$`)
-	// Csőcsapos patentszem
+	// Csőcsapos egyenes patentszem
+	// N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$
 	match = regExpCSCSGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
@@ -520,7 +535,7 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		numOfRows = "1" // Mindig egysoros
 		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
 
-		w.Csaptipus = "Csőcsapos"
+		w.Csaptipus = "Csőcsap"
 	}
 
 	if w.Name == "" {

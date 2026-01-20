@@ -9,6 +9,7 @@ import (
 	"ws-updater/models"
 
 	"github.com/gocarina/gocsv"
+	"bufio"
 )
 
 var (
@@ -106,8 +107,16 @@ func SaveWebProducts(products []models.WsProduct) {
 func main() {
 	var webProducts []models.WsProduct
 	products := db.FetchProducts()
+
+	f, _ := os.OpenFile("nem-feldolgozott.txt",	os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	w := bufio.NewWriter(f)
+	defer w.Flush()
+	defer f.Close()
+
+	processed := 0
+	ignored := 0
 	for _, p := range products {
-		fmt.Printf("%s\n", p.Code)
+		// fmt.Printf("%s\n", p.Code)
 		switch {
 		// GL
 		case regExpGL.MatchString(p.Code),
@@ -117,6 +126,7 @@ func main() {
 			regExpGLVELO.MatchString(p.Code),
 			regExpCSCSGL.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGl(p))
+			processed++
 		// GLPSZ
 		case regExpGLPSZ.MatchString(p.Code),
 			regExpGLPSZ.MatchString(p.Code),
@@ -131,10 +141,12 @@ func main() {
 			regExpGLHOKVELO.MatchString(p.Code),
 			regExpCSCSGLPSZ.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGlPsz(p))
-			//default:
-			//	fmt.Printf("%s\n", p.Code)
+			processed++
+		default:
+			w.WriteString(p.Code + "\n")
+			ignored++
 		}
 	}
 	SaveWebProducts(webProducts)
-	//fmt.Printf("%+v\n", webProducts)
+	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
 }

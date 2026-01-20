@@ -17,17 +17,17 @@ func FetchProducts() []models.KsProduct {
 	defer db.Close()
 
 	sql := `
-		SELECT 
-		    PR."Id", 
-		    PR."Code", 
+		SELECT
+		    PR."Id",
+		    PR."Code",
 		    PR."Name",
 		    CAST(COALESCE(PR."Weight", 0) AS DOUBLE PRECISION) AS "Weight",
 			CAST(
 				COALESCE(
-					(SELECT SUM(SAB."Balance") 
+					(SELECT SUM(SAB."Balance")
 					FROM "StockAccountingBalance" SAB
 					JOIN "StockAccountingItem" SAI ON SAI."Id" = SAB."StockAccountingItem"
-					WHERE SAI."Product" = PR."Id" AND SAB."Stock" <> 2053695), 
+					WHERE SAI."Product" = PR."Id" AND SAB."Stock" <> 2053695),
 				0) -- Ha a SUM NULL-t adna vissza, legyen 0
 			AS DOUBLE PRECISION) AS "Menny",
 		    QU."Name" AS "Unit",
@@ -36,11 +36,13 @@ func FetchProducts() []models.KsProduct {
 		FROM "Product" PR
 		LEFT JOIN "QuantityUnit" QU ON QU."Id" = PR."QuantityUnit"
 		LEFT JOIN "PriceRuleDetail" PRD ON PRD."Product" = PR."Id"
-		LEFT JOIN "PriceRulePrice" PRP ON PRP."PriceRuleDetail" = PRD."Id" 
+		LEFT JOIN "PriceRulePrice" PRP ON PRP."PriceRuleDetail" = PRD."Id"
 		    AND PRP."Currency" = 257
 		    AND (PRP."ValidFrom" IS NULL OR PRP."ValidFrom" <= CURRENT_TIMESTAMP)
 		    AND (PRP."ValidTo" IS NULL OR PRP."ValidTo" >= CURRENT_TIMESTAMP)
-		WHERE PR."Code" LIKE 'N-%CSCS%'
+		WHERE
+			PR."Code" LIKE 'N-%' AND
+			PR."OutGoingProduct" = 0
 		GROUP BY 1, 2, 3, 4, 6
 		HAVING MAX(PRP."Price") > 0
 		ORDER BY "Weight"`
