@@ -184,6 +184,8 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		regExpGLVELO = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 		// CSCS
 		regExpCSCSGL = regexp.MustCompile(`N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$`)
+		// Párhuzamos profilú görgősláncok
+		regExpPPGL    = regexp.MustCompile(`N-(PPGL)-([0-9]+)-([0-9ABC]+)([1-3])$`)
 
 		match          []string
 		family         string
@@ -289,6 +291,18 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		w.Csaptipus = "Csőcsap"
 	}
 
+	// Párhuzamos profilú
+	// N-(PPGL)-([0-9]+)-([0-9ABC]+)([1-3])$
+	match = regExpPPGL.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = match[4]
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Szemforma = "Párhuzamos profilú"
+	}
+
 	w.Manufacturer = models.Manufacturers[manufacturerId]
 	if w.Name == "" {
 		w.Name = fmt.Sprintf("%s Görgőslánc", chainType) // 08B1 Görgőslánc
@@ -341,6 +355,8 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 		regExpGLHOKVELO = regexp.MustCompile(`N-(GLHOK)-([0-9]+)-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 		// Csőcsapos egyenes patentszem
 		regExpCSCSGLPSZ = regexp.MustCompile(`N-(CSCSGLPSZ)-([0-9]+)-([0-9ABC]+)1$`)
+		// Párhuzamos profilú lánc patentszeme
+		regExpPPGLPSZ = regexp.MustCompile(`N-(PPGLPSZ)-([0-9])+-([0-9ABC]+)1$`)
 
 		match          []string
 		family         string
@@ -537,6 +553,19 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 
 		w.Csaptipus = "Csőcsap"
 	}
+
+	// Párhuzamos profilú patentszem
+	// regExpPPGLPSZ = regexp.MustCompile(`N-(PPGLPSZ)-([0-9])+-([0-9ABC]+)1$`)
+	match = regExpPPGLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId, _ = strconv.Atoi(match[2])
+		numOfRows = "1"  // Mindig egysoros
+		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+
+		w.Szemforma = "Párhuzamos profilú"
+	}
+
 
 	if w.Name == "" {
 		w.Name = fmt.Sprintf("%s %s Patentszem", chainType, w.Anyag)

@@ -41,8 +41,6 @@ var (
 	regExpGLPSZVELO = regexp.MustCompile(`N-GLPSZ-[0-9]+-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 	regExpGLHOKVELO = regexp.MustCompile(`N-GLHOK-[0-9]+-([0-9,\/]+x[0-9,\/]+)_VELO?$`)
 
-	// ITT TARTUNK
-
 	// Csőcsapos lánc
 	regExpCSCSGL    = regexp.MustCompile(`N-CSCSGL-[0-9]+-([0-9ABC]+)1$`)
 	regExpCSCSGLPSZ = regexp.MustCompile(`N-CSCSGLPSZ-[0-9]+-([0-9ABC]+)1$`)
@@ -50,6 +48,8 @@ var (
 	// Párhuzamos profilú lánc
 	regExpPPGL    = regexp.MustCompile(`N-PPGL-[0-9]+-([0-9ABC]+)([1-3])$`)
 	regExpPPGLPSZ = regexp.MustCompile(`N-PPGLPSZ-[0-9]+-([0-9ABC]+)1$`)
+
+	// ITT TARTUNK
 
 	// Csapkinyomó
 	regExpCSK = regexp.MustCompile(`N-CSK-[0-9]+-([0-9]+)-([0-9]+)$`)
@@ -116,7 +116,7 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		// fmt.Printf("%s\n", p.Code)
+		fmt.Printf("%s\n", p.Code)
 		switch {
 		// GL
 		case regExpGL.MatchString(p.Code),
@@ -124,7 +124,8 @@ func main() {
 			regExpGL_H.MatchString(p.Code),
 			regExpGLMOFA.MatchString(p.Code),
 			regExpGLVELO.MatchString(p.Code),
-			regExpCSCSGL.MatchString(p.Code):
+			regExpCSCSGL.MatchString(p.Code),
+			regExpPPGL.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGl(p))
 			processed++
 		// GLPSZ
@@ -139,7 +140,8 @@ func main() {
 			regExpSSGLHOK.MatchString(p.Code),
 			regExpGLPSZVELO.MatchString(p.Code),
 			regExpGLHOKVELO.MatchString(p.Code),
-			regExpCSCSGLPSZ.MatchString(p.Code):
+			regExpCSCSGLPSZ.MatchString(p.Code),
+			regExpPPGLPSZ.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGlPsz(p))
 			processed++
 		default:
