@@ -1,0 +1,10 @@
+docker run --rm -d \
+  --name firebird-25 \
+  -p 3050:3050 \
+  -e ISC_PASSWORD=masterkey \
+  -e FIREBIRD_PASSWORD=masterkey \
+  -v "$(pwd)/data":/firebird/data \
+  -v "$(pwd)/data/security2.fdb":/firebird/system/security2.fdb \
+    jacobalberty/firebird:2.5-sc
+
+# docker exec -it firebird-25 bash
