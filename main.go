@@ -4,15 +4,18 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"ws-updater/db"
-	"ws-updater/gl"
-	"ws-updater/mgbf"
 	"ws-updater/csk"
+	"ws-updater/db"
+	"ws-updater/flyer"
+	"ws-updater/gl"
+	"ws-updater/ks"
+	"ws-updater/mgbf"
 	"ws-updater/mggl"
 	"ws-updater/models"
 
-	"github.com/gocarina/gocsv"
 	"bufio"
+
+	"github.com/gocarina/gocsv"
 )
 
 var (
@@ -55,29 +58,25 @@ var (
 	// Csapkinyomó
 	regExpCSK = regexp.MustCompile(`N-CSK-[0-9]+-([0-9]+)-([0-9]+)$`)
 
-	// Mezőgazdasági lánc
-	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
-
-
-	// ITT TARTUNK
-
-	// Boronafog
-	regExpMGBF = regexp.MustCompile(`N-MGBF([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
-
-
-
+	// Lánckerék
+	regExpKS   = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
+	regExpKS_G = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
 	// Agyas lánckerék
 	regExpKR   = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
 	regExpKR_G = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
 	regExpGKR  = regexp.MustCompile(`N-GKR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
 
-	// Lánckerék
-	regExpKS   = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-	regExpKS_G = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
-
 	// Flyer
 	regExpFL   = regexp.MustCompile(`N-FL-[0-9]+-([A-Z][A-Z])([0-9]+)([0-9])([0-9])$`)
 	regExpFLCS = regexp.MustCompile(`N-FLCS-[0-9]+-([A-Z][A-Z])([0-9]+)([0-9])([0-9])$`)
+
+	// ----- ITT TARTUNK ------------------------------------------------------------------------
+	//
+	// Mezőgazdasági lánc
+	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
+
+	// Boronafog
+	regExpMGBF = regexp.MustCompile(`N-MGBF([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
 
 	// Szemeslánc
 	// Nem felületkezelt szemeslánc
@@ -99,7 +98,7 @@ var (
 )
 
 func SaveWebProducts(products []models.WsProduct) {
-	file, err := os.Create("web_products_export.csv")
+	file, err := os.Create("Shoprenter.csv")
 	if err != nil {
 		panic(err)
 	}
@@ -114,15 +113,15 @@ func main() {
 	var webProducts []models.WsProduct
 	products := db.FetchProducts()
 
-	f, _ := os.OpenFile("nem-feldolgozott.txt",	os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	f, _ := os.OpenFile("Kimaradt_Termekek.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	defer f.Close()
 	w := bufio.NewWriter(f)
 	defer w.Flush()
-	defer f.Close()
 
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		fmt.Printf("%s\n", p.Code)
+		//fmt.Printf("%s\n", p.Code)
 		switch {
 		// GL
 		case regExpGL.MatchString(p.Code),
@@ -150,15 +149,31 @@ func main() {
 			regExpPPGLPSZ.MatchString(p.Code):
 			webProducts = append(webProducts, gl.ProcessGlPsz(p))
 			processed++
-		// Csapkinyom
+		// Csapkinyomók
 		case regExpCSK.MatchString(p.Code):
 			webProducts = append(webProducts, csk.ProcessCsk(p))
 			processed++
+		// TODO Boronafogak
 		case regExpMGBF.MatchString(p.Code):
 			webProducts = append(webProducts, mgbf.ProcessMgbf(p))
 			processed++
+		// TODO Mezőgazdasági láncok
 		case regExpMGGL.MatchString(p.Code):
 			webProducts = append(webProducts, mggl.ProcessMggl(p))
+			processed++
+		// Agyas és lemez lánckerekek
+		case regExpKS.MatchString(p.Code),
+			regExpKS_G.MatchString(p.Code),
+			regExpKR.MatchString(p.Code),
+			regExpKR_G.MatchString(p.Code),
+			regExpGKR.MatchString(p.Code):
+			webProducts = append(webProducts, ks.ProcessKs(p))
+			processed++
+
+		// Flyer
+		case regExpFL.MatchString(p.Code),
+			regExpFLCS.MatchString(p.Code):
+			webProducts = append(webProducts, flyer.ProcessFlyer(p))
 			processed++
 
 		default:

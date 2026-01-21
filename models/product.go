@@ -9,6 +9,8 @@ const CsakRendelesreLeiras = "<p>Mivel a termék számos egyéb paraméterrel re
 
 const JelenlegNemElerheto = "<p><strong>A termék jelenleg nincs raktáron.</strong></p>"
 
+var Sornevek = map[string]string{"1": "egy", "2": "két", "3": "három"}
+
 // KS Termék adatok - ezeket olvassuk be a Firebirdből
 type KsProduct struct {
 	ID            int
@@ -44,10 +46,10 @@ type WsProduct struct {
 	CsapHossz        string `csv:"attr_values.csaphossz"`
 	HuvelyAtmero     string `csv:"attr_values.huvelyatmero"`
 	Fogszam          string `csv:"attr_values.fogszam"`
-	Fogedzett        string `csv:"attr_values.fogedzett.hu"`
+	Fogedzett        string `csv:"attr_values.fogedzett.hu"` // Fogedzett | Standared
 	Kivitel          string `csv:"attr_values.kivitel.hu"`
 	HevederSzam      string `csv:"attr_values.hevederek_szama.hu"`
-	LanckerekTipus   string `csv:"attr_values.lanckerektipus.hu"`
+	LanckerekTipus   string `csv:"attr_values.lanckerektipus.hu"` // Agyas lánckerék |  Laplánckerék
 	Feluletkezeles   string `csv:"attr_values.feluletkezeles.hu"`
 	SpecialPrice     string `csv:"product_special.price"`
 	SpecialStart     string `csv:"product_special.date_start"`

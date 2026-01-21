@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"ws-updater/models" // Cseréld a saját projektnevedre
 
@@ -10,14 +9,13 @@ import (
 )
 
 func FetchProducts() []models.KsProduct {
-	// dsn := "SYSDBA:masterkey@localhost:3050//firebird/data/KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
-	dsn := "WEBSHOP:AisoiDoog1gi@192.168.1.4:3056/C:\\ProgramData\\KS\\FbDatabaseServer\\Databases\\KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
+	dsn := "SYSDBA:masterkey@localhost:3050//firebird/data/KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
+	// dsn := "WEBSHOP:AisoiDoog1gi@192.168.1.4:3056/C:\\ProgramData\\KS\\FbDatabaseServer\\Databases\\KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
 	db, err := sql.Open("firebirdsql", dsn)
 	if err != nil {
 		log.Fatalf("Sikertelen kapcsolódás: %v", err)
 	}
 	defer db.Close()
-	fmt.Printf(("Megnyitva.\n"))
 
 	sql := `
 		SELECT
@@ -44,19 +42,17 @@ func FetchProducts() []models.KsProduct {
 		    AND (PRP."ValidFrom" IS NULL OR PRP."ValidFrom" <= CURRENT_TIMESTAMP)
 		    AND (PRP."ValidTo" IS NULL OR PRP."ValidTo" >= CURRENT_TIMESTAMP)
 		WHERE
-			PR."Code" LIKE 'N-MGGL%' AND
+			PR."Code" LIKE 'N-%' AND
 			PR."OutGoingProduct" = 0
 		GROUP BY 1, 2, 3, 4, 6
 		HAVING MAX(PRP."Price") > 0
-		ORDER BY "Weight;"`
+		ORDER BY "Weight"`
 
 	rows, err := db.Query(sql)
 	if err != nil {
 		log.Fatalf("Lekérdezési hiba: %q (%s)", err, sql)
 	}
-	fmt.Printf(("Lekérdezve.\n"))
 	defer rows.Close()
-	fmt.Printf(("Feldolgozás.\n"))
 	var products []models.KsProduct
 	for rows.Next() {
 		var p models.KsProduct
@@ -75,6 +71,5 @@ func FetchProducts() []models.KsProduct {
 		}
 		products = append(products, p)
 	}
-	fmt.Printf(("Lekérdezve.\n"))
 	return products
 }

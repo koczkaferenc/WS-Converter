@@ -173,7 +173,7 @@ var GLParms = map[string]map[string]string{
 func ProcessGl(p models.KsProduct) models.WsProduct {
 	var (
 		// Alap görgőslánc
-		regExpGL   = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])$`)
+		regExpGL = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])$`)
 		// Rozsdamentes görgőslánc
 		regExpSSGL = regexp.MustCompile(`N-(SSGL)-([0-9]+)-([0-9ABC]+)([0-9])$`)
 		// Heavy görgőslánc
@@ -185,7 +185,7 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 		// CSCS
 		regExpCSCSGL = regexp.MustCompile(`N-(CSCSGL)-([0-9]+)-([0-9ABC]+)1$`)
 		// Párhuzamos profilú görgősláncok
-		regExpPPGL    = regexp.MustCompile(`N-(PPGL)-([0-9]+)-([0-9ABC]+)([1-3])$`)
+		regExpPPGL = regexp.MustCompile(`N-(PPGL)-([0-9]+)-([0-9ABC]+)([1-3])$`)
 
 		match          []string
 		family         string
@@ -560,12 +560,11 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	if match != nil {
 		family = match[1]
 		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1"  // Mindig egysoros
+		numOfRows = "1" // Mindig egysoros
 		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
 
 		w.Szemforma = "Párhuzamos profilú"
 	}
-
 
 	if w.Name == "" {
 		w.Name = fmt.Sprintf("%s %s Patentszem", chainType, w.Anyag)
