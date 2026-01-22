@@ -9,8 +9,9 @@ import (
 	"ws-updater/flyer"
 	"ws-updater/gl"
 	"ws-updater/ks"
-	"ws-updater/mgbf"
-	"ws-updater/mggl"
+
+	// "ws-updater/mgbf"
+	// "ws-updater/mggl"
 	"ws-updater/models"
 
 	"bufio"
@@ -71,12 +72,6 @@ var (
 	regExpFLCS = regexp.MustCompile(`N-FLCS-[0-9]+-([A-Z][A-Z])([0-9]+)([0-9])([0-9])$`)
 
 	// ----- ITT TARTUNK ------------------------------------------------------------------------
-	//
-	// Mezőgazdasági lánc
-	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
-
-	// Boronafog
-	regExpMGBF = regexp.MustCompile(`N-MGBF([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
 
 	// Szemeslánc
 	// Nem felületkezelt szemeslánc
@@ -89,6 +84,12 @@ var (
 	regExpSZLPSZ = regexp.MustCompile(`N-SZLPSZ-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
 	// Nem felületkezelt szemes bányalánc patentszem 3 mérettel
 	regExpSZL3 = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+
+	// Mezőgazdasági lánc
+	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
+
+	// Boronafog
+	regExpMGBF = regexp.MustCompile(`N-MGBF([A-Z]+)-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
 
 	// Hüvelyes lánc
 	// Hüvelyes lánc, a TM után az osztás értéke áll
@@ -154,14 +155,14 @@ func main() {
 			webProducts = append(webProducts, csk.ProcessCsk(p))
 			processed++
 		// TODO Boronafogak
-		case regExpMGBF.MatchString(p.Code):
-			webProducts = append(webProducts, mgbf.ProcessMgbf(p))
-			processed++
-		// TODO Mezőgazdasági láncok
-		case regExpMGGL.MatchString(p.Code):
-			webProducts = append(webProducts, mggl.ProcessMggl(p))
-			processed++
-		// Agyas és lemez lánckerekek
+		//#case regExpMGBF.MatchString(p.Code):
+		//#	webProducts = append(webProducts, mgbf.ProcessMgbf(p))
+		//#	processed++
+		//#// TODO Mezőgazdasági láncok
+		//#case regExpMGGL.MatchString(p.Code):
+		//#	webProducts = append(webProducts, mggl.ProcessMggl(p))
+		//#	processed++
+		//#// Agyas és lemez lánckerekek
 		case regExpKS.MatchString(p.Code),
 			regExpKS_G.MatchString(p.Code),
 			regExpKR.MatchString(p.Code),
