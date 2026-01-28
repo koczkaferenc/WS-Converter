@@ -3,7 +3,7 @@ package models
 const Zaradek = "<br><strong>Figyelem!</strong><br>A termékkép illusztráció, a pontos műszaki tartalmat a cikkszám és a termék megnevezése tartalmazza! Kérdés, kérés esetén hívja munkatársunkat, vagy vegye fel velünk a kapcsolatot!"
 
 // Ezek a termékcsoportok csak rendelésre kaphatók.
-var CsakRendelesre = []string{"FGL", "FGLPSZ", "FGLSPSZ", "CSCSGL", "CSCSGLPSZ", "CSCSGLSPSZ", "CSGL", "CSGLPSZ", "CSGLSPSZ"}
+var CsakRendelesre = []string{"FGL", "FGLPSZ", "FGLSPSZ", "CSCSGL", "CSCSGLPSZ", "CSCSGLSPSZ", "CSGL", "CSGLPSZ", "CSGLSPSZ", "MGBF"}
 
 const CsakRendelesreLeiras = "<p>Mivel a termék számos egyéb paraméterrel rendelkezik, így csak egyeztetést követően rendelhető. Kérjük, hívja munkatársunkat, vagy vegye fel a kapcsolatot velünk az elérhetőségeink valamelyikén.</p>"
 
@@ -62,6 +62,7 @@ type WsProduct struct {
 	ImageAdditional  string `csv:"product_image.image.0"`
 	HuzalAtmero      string `csv:"attr_values.huzal_atmero"`
 	BelsoHossz       string `csv:"attr_values.belso_hossz"`
+	Profil           string `csv:"attr_values.profil"`
 }
 
 // Gyártók
