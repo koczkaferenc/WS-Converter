@@ -10,9 +10,11 @@ import (
 	"ws-updater/models"
 )
 
-func ProcessKs1(p models.KsProduct) {
-	fmt.Printf("Code: %s | Name: %s\n", p.Code, p.Name)
-
+func ProcessKs1(p models.KsProduct) models.PsProduct {
+	psp := models.PsProduct{}
+	psp.Name = p.Name
+	psp.ID = p.Code
+	return psp
 }
 
 func ProcessKs(p models.KsProduct) models.WsProduct {

@@ -25,73 +25,73 @@ type KsProduct struct {
 
 // A Prestashop kimenet mezői
 type PsProduct struct {
-	id                 string `csv:"Product ID"`
-	aktiv              string `csv:"Active (0/1)"`
-	nev                string `csv:"Name *"`
-	kategoria_nev      string `csv:"Categories (x,y,z...)"`
-	netto_ar           string `csv:"Price tax excluded"`
-	ado_kategoria      string `csv:"Tax rules ID"`
-	beszerzesi_ar      `csv:"Wholesale price"`
-	akcios             `csv:"On sale (0/1)"`
-	diszkont_engedmeny `csv:"Discount amount"`
-	diszkont_szazalek  `csv:"Discount percent"`
-	diszkont_tol       `csv:"Discount from (yyyy-mm-dd)"`
-	diszkont_ig        `csv:"Discount to (yyyy-mm-dd)"`
-	string             `csv:"Reference #"`
-	string             `csv:"Supplier reference #"`
-	string             `csv:"Supplier"`
-	string             `csv:"Manufacturer"`
-	string             `csv:"EAN13"`
-	string             `csv:"UPC"`
-	string             `csv:"MPN"`
-	string             `csv:"Ecotax"`
-	string             `csv:"Width"`
-	string             `csv:"Height"`
-	string             `csv:"Depth"`
-	string             `csv:"Weight"`
-	string             `csv:"Delivery time of in-stock products"`
-	string             `csv:"Delivery time of out-of-stock products with allowed orders"`
-	string             `csv:"Quantity"`
-	string             `csv:"Minimal quantity"`
-	string             `csv:"Low stock level"`
-	string             `csv:"Receive a low stock alert by email"`
-	string             `csv:"Visibility"`
-	string             `csv:"Additional shipping cost"`
-	string             `csv:"Unity"`
-	string             `csv:"Unit price"`
-	string             `csv:"Summary"`
-	string             `csv:"Description"`
-	string             `csv:"Tags (x,y,z...)"`
-	string             `csv:"Meta title"`
-	string             `csv:"Meta keywords"`
-	string             `csv:"Meta description"`
-	string             `csv:"URL rewritten"`
-	string             `csv:"Text when in stock"`
-	string             `csv:"Text when backorder allowed"`
-	string             `csv:"Available for order (0 = No, 1 = Yes)"`
-	string             `csv:"Product available date"`
-	string             `csv:"Product creation date"`
-	string             `csv:"Show price (0 = No, 1 = Yes)"`
-	string             `csv:"Image URLs (x,y,z...)"`
-	string             `csv:"Image alt texts (x,y,z...)"`
-	string             `csv:"Delete existing images (0 = No, 1 = Yes)"`
-	string             `csv:"Feature(Name:Value:Position)"`
-	string             `csv:"Available online only (0 = No, 1 = Yes)"`
-	string             `csv:"Condition"`
-	string             `csv:"Customizable (0 = No, 1 = Yes)"`
-	string             `csv:"Uploadable files (0 = No, 1 = Yes)"`
-	string             `csv:"Text fields (0 = No, 1 = Yes)"`
-	string             `csv:"Out of stock action"`
-	string             `csv:"Virtual product"`
-	string             `csv:"File URL"`
-	string             `csv:"Number of allowed downloads"`
-	string             `csv:"Expiration date"`
-	string             `csv:"Number of days"`
-	string             `csv:"ID / Name of shop"`
-	string             `csv:"Advanced stock management"`
-	string             `csv:"Depends On Stock"`
-	string             `csv:"Warehouse"`
-	string             `csv:"Acessories  (x,y,z...)"`
+	ID                       string `csv:"Product ID"`
+	Active                   string `csv:"Active (0/1)"`
+	Name                     string `csv:"Name *"`
+	Categories               string `csv:"Categories (x,y,z...)"`
+	PriceTaxExcluded         string `csv:"Price tax excluded"`
+	TaxRulesID               string `csv:"Tax rules ID"`
+	WholesalePrice           string `csv:"Wholesale price"`
+	OnSale                   string `csv:"On sale (0/1)"`
+	DiscountAmount           string `csv:"Discount amount"`
+	DiscountPercent          string `csv:"Discount percent"`
+	DiscountFrom             string `csv:"Discount from (yyyy-mm-dd)"`
+	DiscountTo               string `csv:"Discount to (yyyy-mm-dd)"`
+	Reference                string `csv:"Reference #"`
+	SupplierReference        string `csv:"Supplier reference #"`
+	Supplier                 string `csv:"Supplier"`
+	Manufacturer             string `csv:"Manufacturer"`
+	EAN13                    string `csv:"EAN13"`
+	UPC                      string `csv:"UPC"`
+	MPN                      string `csv:"MPN"`
+	Ecotax                   string `csv:"Ecotax"`
+	Width                    string `csv:"Width"`
+	Height                   string `csv:"Height"`
+	Depth                    string `csv:"Depth"`
+	Weight                   string `csv:"Weight"`
+	DeliveryTimeInStock      string `csv:"Delivery time of in-stock products"`
+	DeliveryTimeOutOfStock   string `csv:"Delivery time of out-of-stock products with allowed orders"`
+	Quantity                 string `csv:"Quantity"`
+	MinimalQuantity          string `csv:"Minimal quantity"`
+	LowStockLevel            string `csv:"Low stock level"`
+	LowStockAlertEmail       string `csv:"Receive a low stock alert by email"`
+	Visibility               string `csv:"Visibility"`
+	AdditionalShippingCost   string `csv:"Additional shipping cost"`
+	Unity                    string `csv:"Unity"`
+	UnitPrice                string `csv:"Unit price"`
+	Summary                  string `csv:"Summary"`
+	Description              string `csv:"Description"`
+	Tags                     string `csv:"Tags (x,y,z...)"`
+	MetaTitle                string `csv:"Meta title"`
+	MetaKeywords             string `csv:"Meta keywords"`
+	MetaDescription          string `csv:"Meta description"`
+	URLRewritten             string `csv:"URL rewritten"`
+	TextInStock              string `csv:"Text when in stock"`
+	TextBackorderAllowed     string `csv:"Text when backorder allowed"`
+	AvailableForOrder        string `csv:"Available for order (0 = No, 1 = Yes)"`
+	ProductAvailableDate     string `csv:"Product available date"`
+	ProductCreationDate      string `csv:"Product creation date"`
+	ShowPrice                string `csv:"Show price (0 = No, 1 = Yes)"`
+	ImageURLs                string `csv:"Image URLs (x,y,z...)"`
+	ImageAltTexts            string `csv:"Image alt texts (x,y,z...)"`
+	DeleteExistingImages     string `csv:"Delete existing images (0 = No, 1 = Yes)"`
+	Features                 string `csv:"Feature(Name:Value:Position)"`
+	AvailableOnlineOnly      string `csv:"Available online only (0 = No, 1 = Yes)"`
+	Condition                string `csv:"Condition"`
+	Customizable             string `csv:"Customizable (0 = No, 1 = Yes)"`
+	UploadableFiles          string `csv:"Uploadable files (0 = No, 1 = Yes)"`
+	TextFields               string `csv:"Text fields (0 = No, 1 = Yes)"`
+	OutOfStockAction         string `csv:"Out of stock action"`
+	VirtualProduct           string `csv:"Virtual product"`
+	FileURL                  string `csv:"File URL"`
+	NumberOfAllowedDownloads string `csv:"Number of allowed downloads"`
+	ExpirationDate           string `csv:"Expiration date"`
+	NumberOfDays             string `csv:"Number of days"`
+	ShopIDOrName             string `csv:"ID / Name of shop"`
+	AdvancedStockManagement  string `csv:"Advanced stock management"`
+	DependsOnStock           string `csv:"Depends On Stock"`
+	Warehouse                string `csv:"Warehouse"`
+	Accessories              string `csv:"Acessories  (x,y,z...)"`
 }
 
 // A Shoprenter WebShop kimenet mezői
