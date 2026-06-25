@@ -23,7 +23,78 @@ type KsProduct struct {
 	ReSellerPrice float64
 }
 
-// A WebShop kimenet mezői
+// A Prestashop kimenet mezői
+type PsProduct struct {
+	id                 string `csv:"Product ID"`
+	aktiv              string `csv:"Active (0/1)"`
+	nev                string `csv:"Name *"`
+	kategoria_nev      string `csv:"Categories (x,y,z...)"`
+	netto_ar           string `csv:"Price tax excluded"`
+	ado_kategoria      string `csv:"Tax rules ID"`
+	beszerzesi_ar      `csv:"Wholesale price"`
+	akcios             `csv:"On sale (0/1)"`
+	diszkont_engedmeny `csv:"Discount amount"`
+	diszkont_szazalek  `csv:"Discount percent"`
+	diszkont_tol       `csv:"Discount from (yyyy-mm-dd)"`
+	diszkont_ig        `csv:"Discount to (yyyy-mm-dd)"`
+	string             `csv:"Reference #"`
+	string             `csv:"Supplier reference #"`
+	string             `csv:"Supplier"`
+	string             `csv:"Manufacturer"`
+	string             `csv:"EAN13"`
+	string             `csv:"UPC"`
+	string             `csv:"MPN"`
+	string             `csv:"Ecotax"`
+	string             `csv:"Width"`
+	string             `csv:"Height"`
+	string             `csv:"Depth"`
+	string             `csv:"Weight"`
+	string             `csv:"Delivery time of in-stock products"`
+	string             `csv:"Delivery time of out-of-stock products with allowed orders"`
+	string             `csv:"Quantity"`
+	string             `csv:"Minimal quantity"`
+	string             `csv:"Low stock level"`
+	string             `csv:"Receive a low stock alert by email"`
+	string             `csv:"Visibility"`
+	string             `csv:"Additional shipping cost"`
+	string             `csv:"Unity"`
+	string             `csv:"Unit price"`
+	string             `csv:"Summary"`
+	string             `csv:"Description"`
+	string             `csv:"Tags (x,y,z...)"`
+	string             `csv:"Meta title"`
+	string             `csv:"Meta keywords"`
+	string             `csv:"Meta description"`
+	string             `csv:"URL rewritten"`
+	string             `csv:"Text when in stock"`
+	string             `csv:"Text when backorder allowed"`
+	string             `csv:"Available for order (0 = No, 1 = Yes)"`
+	string             `csv:"Product available date"`
+	string             `csv:"Product creation date"`
+	string             `csv:"Show price (0 = No, 1 = Yes)"`
+	string             `csv:"Image URLs (x,y,z...)"`
+	string             `csv:"Image alt texts (x,y,z...)"`
+	string             `csv:"Delete existing images (0 = No, 1 = Yes)"`
+	string             `csv:"Feature(Name:Value:Position)"`
+	string             `csv:"Available online only (0 = No, 1 = Yes)"`
+	string             `csv:"Condition"`
+	string             `csv:"Customizable (0 = No, 1 = Yes)"`
+	string             `csv:"Uploadable files (0 = No, 1 = Yes)"`
+	string             `csv:"Text fields (0 = No, 1 = Yes)"`
+	string             `csv:"Out of stock action"`
+	string             `csv:"Virtual product"`
+	string             `csv:"File URL"`
+	string             `csv:"Number of allowed downloads"`
+	string             `csv:"Expiration date"`
+	string             `csv:"Number of days"`
+	string             `csv:"ID / Name of shop"`
+	string             `csv:"Advanced stock management"`
+	string             `csv:"Depends On Stock"`
+	string             `csv:"Warehouse"`
+	string             `csv:"Acessories  (x,y,z...)"`
+}
+
+// A Shoprenter WebShop kimenet mezői
 
 // / TODO 0 mennyiségűhöz odaírni, hogy csak rendelésre!!!
 type WsProduct struct {
