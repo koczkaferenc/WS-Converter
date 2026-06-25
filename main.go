@@ -171,6 +171,7 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
+			ks.ProcessKs1(p)
 			webProducts = append(webProducts, ks.ProcessKs(p))
 			processed++
 

@@ -10,6 +10,11 @@ import (
 	"ws-updater/models"
 )
 
+func ProcessKs1(p models.KsProduct) {
+	fmt.Printf("Code: %s | Name: %s\n", p.Code, p.Name)
+
+}
+
 func ProcessKs(p models.KsProduct) models.WsProduct {
 	var (
 		regExpKS   = regexp.MustCompile(`N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
