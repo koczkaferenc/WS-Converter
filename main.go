@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"encoding/csv"
 	"fmt"
 	"os"
 	"regexp"
@@ -10,17 +12,21 @@ import (
 	"ws-updater/gl"
 	"ws-updater/ks"
 	"ws-updater/mgbf"
-
-	// "ws-updater/mgbf"
-	// "ws-updater/mggl"
 	"ws-updater/models"
-
-	"bufio"
 
 	"github.com/gocarina/gocsv"
 )
 
 var (
+
+	// Lánckerekek
+	regExpKS   = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
+	regExpKS_G = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
+	// Agyas lánckerék
+	regExpKR   = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
+	regExpKR_G = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
+	regExpGKR  = regexp.MustCompile(`N-GKR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
+
 	// Görgőslánc
 	// 1,2 és 3 soros görgősláncok
 	regExpGL = regexp.MustCompile(`N-GL-[0-9]+-([0-9ABC]+)([123])$`)
@@ -60,14 +66,6 @@ var (
 	// Csapkinyomó
 	regExpCSK = regexp.MustCompile(`N-CSK-[0-9]+-([0-9]+)-([0-9]+)$`)
 
-	// Lánckerék
-	regExpKS   = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-	regExpKS_G = regexp.MustCompile(`N-KS-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
-	// Agyas lánckerék
-	regExpKR   = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-	regExpKR_G = regexp.MustCompile(`N-KR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
-	regExpGKR  = regexp.MustCompile(`N-GKR-[0-9]+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-
 	// Flyer
 	regExpFL   = regexp.MustCompile(`N-FL-[0-9]+-([A-Z][A-Z])([0-9]+)([0-9])([0-9])$`)
 	regExpFLCS = regexp.MustCompile(`N-FLCS-[0-9]+-([A-Z][A-Z])([0-9]+)([0-9])([0-9])$`)
@@ -99,20 +97,38 @@ var (
 	regExpHLPSZ = regexp.MustCompile(`N-HLPSZ-[0-9]+-TM([0-9]+)$`)
 )
 
-func SaveWebProducts(products []models.WsProduct) {
-	file, err := os.Create("Shoprenter.csv")
+// Shoprenter csv mentése
+// func SaveShopRenterFile(products []models.WsProduct) {
+// 	file, err := os.Create("Shoprenter.csv")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	defer file.Close()
+// 	err = gocsv.MarshalFile(&products, file)
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// }
+
+func SavePrestaFile(products []models.PsProduct) {
+	file, err := os.Create("PrestaShop.csv")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-	err = gocsv.MarshalFile(&products, file)
+
+	writer := csv.NewWriter(file)
+	writer.Comma = ';'
+
+	err = gocsv.MarshalCSV(&products, gocsv.NewSafeCSVWriter(writer))
 	if err != nil {
 		panic(err)
 	}
 }
 
 func main() {
-	var webProducts []models.WsProduct
+	var srWebProducts []models.WsProduct
+	var psWebProducts []models.PsProduct
 	products := db.FetchProducts()
 
 	f, _ := os.OpenFile("Kimaradt_Termekek.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
@@ -123,8 +139,22 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		//fmt.Printf("%s\n", p.Code)
+		// fmt.Printf("%s\n", p.Code)
 		switch {
+
+		//#// TODO Mezőgazdasági láncok0
+		//#case regExpMGGL.MatchString(p.Code):0
+		//#	srWebProducts = append(srWebProducts, mggl.ProcessMggl(p))0
+		//#	processed++0
+		//#// Agyas és lemez lánckerekek0
+		case regExpKS.MatchString(p.Code),
+			regExpKS_G.MatchString(p.Code),
+			regExpKR.MatchString(p.Code),
+			regExpKR_G.MatchString(p.Code),
+			regExpGKR.MatchString(p.Code):
+			psWebProducts = append(psWebProducts, ks.ProcessKs1(p))
+			processed++
+
 		// GL
 		case regExpGL.MatchString(p.Code),
 			regExpSSGL.MatchString(p.Code),
@@ -133,7 +163,7 @@ func main() {
 			regExpGLVELO.MatchString(p.Code),
 			regExpCSCSGL.MatchString(p.Code),
 			regExpPPGL.MatchString(p.Code):
-			webProducts = append(webProducts, gl.ProcessGl(p))
+			srWebProducts = append(srWebProducts, gl.ProcessGl(p))
 			processed++
 		// GLPSZ
 		case regExpGLPSZ.MatchString(p.Code),
@@ -149,43 +179,30 @@ func main() {
 			regExpGLHOKVELO.MatchString(p.Code),
 			regExpCSCSGLPSZ.MatchString(p.Code),
 			regExpPPGLPSZ.MatchString(p.Code):
-			webProducts = append(webProducts, gl.ProcessGlPsz(p))
+			srWebProducts = append(srWebProducts, gl.ProcessGlPsz(p))
 			processed++
 		// Csapkinyomók
 		case regExpCSK.MatchString(p.Code):
-			webProducts = append(webProducts, csk.ProcessCsk(p))
+			srWebProducts = append(srWebProducts, csk.ProcessCsk(p))
 			processed++
 
 		// Boronafogak
 		case regExpMGBF.MatchString(p.Code):
-			webProducts = append(webProducts, mgbf.ProcessMgbf(p))
-			processed++
-
-		//#// TODO Mezőgazdasági láncok0
-		//#case regExpMGGL.MatchString(p.Code):0
-		//#	webProducts = append(webProducts, mggl.ProcessMggl(p))0
-		//#	processed++0
-		//#// Agyas és lemez lánckerekek0
-		case regExpKS.MatchString(p.Code),
-			regExpKS_G.MatchString(p.Code),
-			regExpKR.MatchString(p.Code),
-			regExpKR_G.MatchString(p.Code),
-			regExpGKR.MatchString(p.Code):
-			ks.ProcessKs1(p)
-			webProducts = append(webProducts, ks.ProcessKs(p))
+			srWebProducts = append(srWebProducts, mgbf.ProcessMgbf(p))
 			processed++
 
 		// Flyer
 		case regExpFL.MatchString(p.Code),
 			regExpFLCS.MatchString(p.Code):
-			webProducts = append(webProducts, flyer.ProcessFlyer(p))
+			srWebProducts = append(srWebProducts, flyer.ProcessFlyer(p))
 			processed++
 
 		default:
-			w.WriteString(p.Code + "\n")
+			//w.WriteString("Hiba: " + p.Code + "\n")
 			ignored++
 		}
 	}
-	SaveWebProducts(webProducts)
+	// SaveShopRenterFile(srWebProducts)
+	SavePrestaFile(psWebProducts)
 	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
 }
