@@ -129,7 +129,7 @@ func SavePrestaFile(products []models.PsProduct) {
 func main() {
 	var srWebProducts []models.WsProduct
 	var psWebProducts []models.PsProduct
-	products := db.FetchProducts()
+	products, prodCodes := db.FetchProducts()
 
 	f, _ := os.OpenFile("Kimaradt_Termekek.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	defer f.Close()
@@ -152,7 +152,7 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, ks.ProcessKs1(p))
+			psWebProducts = append(psWebProducts, ks.ProcessKs1(p, &prodCodes))
 			processed++
 
 		// GL
@@ -201,6 +201,7 @@ func main() {
 			//w.WriteString("Hiba: " + p.Code + "\n")
 			ignored++
 		}
+
 	}
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)

@@ -4,12 +4,13 @@ package ks
 import (
 	"fmt"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 	"ws-updater/models"
 )
 
-func ProcessKs1(p models.KsProduct) models.PsProduct {
+func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	var (
 		regExpKS   = regexp.MustCompile(`N-(KS)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
 		regExpKS_G = regexp.MustCompile(`N-(KS)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
@@ -36,16 +37,6 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 		"Kivitel":   "N/A", // Egysoros | kétsoros | hármosoros (sorokszama alapján képezve)
 	}
 
-	// Alap paraméterek feltöltése a KulcsSoftból
-	// KS-ek fogszáma és keménysége
-	// N-KS-0-08B2_Z30
-	// N-KS-0-08B2_Z21_G
-
-	// &p.Weight,
-	// &p.Stock,
-	// &p.Unit//
-	// &p.ReSellerPrice,
-
 	psp.DeliveryTimeInStock = "5 nap"     // TODO
 	psp.DeliveryTimeOutOfStock = "14 nap" // TODO
 
@@ -62,55 +53,16 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
 	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
 	psp.Unity = "db"
-
 	psp.Categories = "Lánckerekek"
-	psp.OnSale = "0"          // TODO: akció számítása
-	psp.DiscountAmount = ""   // TODO
-	psp.DiscountPercent = "0" // TODO
-	psp.DiscountFrom = ""     // TODO
-	psp.DiscountTo = ""       // TODO
-
-	psp.SupplierReference = "" // TODO
-	psp.Supplier = ""          // TODO
-	psp.Manufacturer = ""      // TODO
-	psp.EAN13 = ""             // TODO
-	psp.UPC = ""               // TODO
-	psp.MPN = ""               // TODO
-	psp.Ecotax = ""            // TODO
-	psp.Width = ""             // TODO
-	psp.Height = ""            // TODO
-	psp.Depth = ""             // TODO
-
-	// nem használjuk
-	psp.MinimalQuantity = ""        // TODO
-	psp.LowStockLevel = ""          // TODO
-	psp.LowStockAlertEmail = ""     // TODO
-	psp.Visibility = ""             // TODO
-	psp.AdditionalShippingCost = "" // TODO
-
-	psp.TextInStock = "Raktáron"                                   // TODO
-	psp.TextBackorderAllowed = "Nincs raktáron, de utánrendelhető" // TODO
-	psp.AvailableForOrder = "1"                                    // Rendelhető?
-	psp.ProductAvailableDate = ""                                  // TODO
-	psp.ProductCreationDate = ""                                   // TODO
-	psp.ShowPrice = "1"                                            // TODO
-	psp.DeleteExistingImages = "1"                                 // TODO
-
-	psp.AvailableOnlineOnly = "0"     // TODO
-	psp.Condition = ""                // Mindenünk új
-	psp.Customizable = ""             // Nem konfigurálható
-	psp.UploadableFiles = ""          // Nincs ilyenünk
-	psp.TextFields = ""               // TODO
-	psp.OutOfStockAction = ""         // TODO
-	psp.VirtualProduct = ""           // TODO
-	psp.FileURL = ""                  // TODO
-	psp.NumberOfAllowedDownloads = "" // TODO
-	psp.ExpirationDate = ""           // TODO
-	psp.NumberOfDays = ""             // TODO
-	psp.ShopIDOrName = ""             // TODO
-	psp.AdvancedStockManagement = ""  // TODO
-	psp.DependsOnStock = ""           // TODO
-	psp.Warehouse = ""                // TODO
+	psp.TextInStock = "Raktáron"
+	psp.TextBackorderAllowed = "Rendelhető"
+	psp.ShowPrice = "1"            // TODO
+	psp.OnSale = "0"               // Akció számítása
+	psp.DiscountAmount = ""        // TODO
+	psp.DiscountPercent = "0"      // TODO
+	psp.DiscountFrom = ""          // TODO
+	psp.DiscountTo = ""            // TODO
+	psp.DeleteExistingImages = "0" // TODO
 
 	// ---------------
 
@@ -129,7 +81,6 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 		features["Fogszám"] = match[5]
 		features["Fogedzett"] = "Nem"
 		features["Típus"] = "Laplánckerék"
-		psp.Accessories = "N-KR-10-16B2_Z30, "
 	}
 
 	// N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$
@@ -194,7 +145,7 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 
 	psp.Summary = fmt.Sprintf("%s gyártmányú %s %s fogszámú %s fogedzett %s.",
 		psp.Manufacturer, strings.ToLower(models.Sornevek[sorokszama]), features["Fogszám"], strings.ToLower(features["Fogedzett"]), strings.ToLower(features["Típus"]))
-	// Ebben a fázisában, és nem lehet pont a végén.
+	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
 	psp.MetaDescription = strings.TrimRight(psp.Summary, ".")
 
 	psp.Summary += "<p style='color: red;'>A lánckerék technikai furattal van ellátva. Amennyiben megmunkálva kívánja beszerezni, vegye fel a kapcsolatot a munkatársunkkal a kívánt furat méretének egyeztetése érdekében!</p>"
@@ -208,29 +159,21 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 	// Elérhető mennyiség
 	psp.Quantity = strconv.Itoa(int(p.Stock))
 
-	// Ha nincs belőle raktáron, nem elérhető.
-	// qty, _ := strconv.ParseFloat(w.Quantity, 64)
-	// if qty == 0 {
-	// 	w.ShortDescription += models.JelenlegNemElerheto
-	// } else {
-	// 	if slices.Contains(models.CsakRendelesre, family) {
-	// 		w.ShortDescription += models.CsakRendelesreLeiras
-	// 	}
-	// }
-
+	// Termék név előállítása
 	psp.Name = fmt.Sprintf("%s-%s%sZ%s %s",
 		family, productType, sorokszama, features["Fogszám"], strings.ToLower(features["Típus"]))
-
 	if features["Típus"] == "Fogedzett" {
 		psp.Name += "G"
 	}
+
+	// Képek előállítása
 	psp.ImageURLs = fmt.Sprintf(
 		"%s/N-%s-%s.png,%s/D-%s-%s.png",
 		models.ImagesBase, family, sorokszama,
 		models.ImagesBase, family, sorokszama)
 	psp.ImageAltTexts = psp.Name
 
-	// Speciális tulajdonságok
+	// Speciális tulajdonságok beállítása
 	features["Kivitel"] = models.Sornevek[sorokszama]
 	i := 1
 	for k, v := range features {
@@ -240,8 +183,40 @@ func ProcessKs1(p models.KsProduct) models.PsProduct {
 	if psp.Features != "" {
 		psp.Features = strings.TrimSuffix(psp.Features, ",")
 	}
-	fmt.Printf("%s: %v\n", psp.Reference, psp.Features)
+
+	// Kapcsolódó termékek
+	psp.Accessories = ""
+	// TODO Ideiglenesen kivesszük, mert ha nem ltezik a termék, nagyon lelassul
+	//rgxStr := fmt.Sprintf(`^N-GL-[0-9]+-%s%s.*`, productType, sorokszama)
+	//psp.Accessories += getRelatedProductIds(rgxStr, prodCodes)
+
+	// Rendelhető?
+	psp.AvailableForOrder = "1"
+	if slices.Contains(models.CsakRendelesre, family) {
+		psp.AvailableForOrder = "0"
+	}
+
+	//fmt.Printf("%s: %v\n", psp.Reference, psp.AvailableForOrder)
+
 	return psp
+}
+
+/************************************************************
+* Kpacsolódó termékek listájának előállítása
+************************************************************/
+func getRelatedProductIds(rgxStr string, prodCodes *[]string) string {
+	accessories := ""
+	rgx := regexp.MustCompile(rgxStr)
+	for _, code := range *prodCodes {
+		match := rgx.FindStringSubmatch(code)
+		if match != nil {
+			accessories += code + ","
+		}
+	}
+	if accessories != "" {
+		accessories = strings.TrimSuffix(accessories, ",")
+	}
+	return accessories
 }
 
 // func ProcessKs(p models.KsProduct) models.WsProduct {

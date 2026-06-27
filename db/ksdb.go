@@ -8,9 +8,11 @@ import (
 	_ "github.com/nakagami/firebirdsql"
 )
 
-func FetchProducts() []models.KsProduct {
-	dsn := "SYSDBA:masterkey@localhost:3050//firebird/data/KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
-	// dsn := "WEBSHOP:AisoiDoog1gi@192.168.1.4:3056/C:\\ProgramData\\KS\\FbDatabaseServer\\Databases\\KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
+var dsn = "SYSDBA:masterkey@localhost:3050//firebird/data/KSCOMPANY_AGRIALNCKFT_170203094013.KSFDB?column_name_to_lower=true&encoding=UTF8"
+
+// A KulcsSoftban tűrolt termékek beolvasása
+func FetchProducts() ([]models.KsProduct, []string) {
+
 	db, err := sql.Open("firebirdsql", dsn)
 	if err != nil {
 		log.Fatalf("Sikertelen kapcsolódás: %v", err)
@@ -42,7 +44,7 @@ func FetchProducts() []models.KsProduct {
 		    AND (PRP."ValidFrom" IS NULL OR PRP."ValidFrom" <= CURRENT_TIMESTAMP)
 		    AND (PRP."ValidTo" IS NULL OR PRP."ValidTo" >= CURRENT_TIMESTAMP)
 		WHERE
-			PR."Code" LIKE 'N-KR%' AND
+			PR."Code" LIKE 'N-%' AND
 			PR."OutGoingProduct" = 0
 		GROUP BY 1, 2, 3, 4, 6
 		HAVING MAX(PRP."Price") > 0
@@ -54,6 +56,7 @@ func FetchProducts() []models.KsProduct {
 	}
 	defer rows.Close()
 	var products []models.KsProduct
+	var prodCodes []string
 	for rows.Next() {
 		var p models.KsProduct
 		err := rows.Scan(
@@ -70,6 +73,7 @@ func FetchProducts() []models.KsProduct {
 			log.Fatalf("Lekérdezési hiba: %q", err)
 		}
 		products = append(products, p)
+		prodCodes = append(prodCodes, p.Code)
 	}
-	return products
+	return products, prodCodes
 }
