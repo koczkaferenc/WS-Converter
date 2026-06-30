@@ -7,9 +7,9 @@ import (
 	"os"
 	"regexp"
 	"ws-updater/db"
-	"ws-updater/generic"
 	"ws-updater/gl"
 	"ws-updater/ks"
+	SpecialProducts "ws-updater/specials"
 
 	"ws-updater/models"
 
@@ -138,7 +138,7 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		// fmt.Printf("%s\n", p.Code)
+		fmt.Printf("%s\n", p.Code)
 		switch {
 
 		//#// TODO Mezőgazdasági láncok0
@@ -151,7 +151,6 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
-			generic.ProcessProd(p)
 			psWebProducts = append(psWebProducts, ks.ProcessKs(p, &prodCodes))
 			processed++
 
@@ -206,6 +205,10 @@ func main() {
 		}
 
 	}
+
+	// Komplex termékek, termékcsomagok képzése
+	psWebProducts = append(psWebProducts, SpecialProducts.ProcessSpecialProducts(psWebProducts)...)
+
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)
 	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
