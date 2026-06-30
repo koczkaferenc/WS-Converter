@@ -7,7 +7,10 @@ import (
 	"os"
 	"regexp"
 	"ws-updater/db"
+	"ws-updater/generic"
+	"ws-updater/gl"
 	"ws-updater/ks"
+
 	"ws-updater/models"
 
 	"github.com/gocarina/gocsv"
@@ -148,6 +151,7 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
+			generic.ProcessProd(p)
 			psWebProducts = append(psWebProducts, ks.ProcessKs(p, &prodCodes))
 			processed++
 
@@ -159,7 +163,7 @@ func main() {
 			regExpGLVELO.MatchString(p.Code),
 			regExpCSCSGL.MatchString(p.Code),
 			regExpPPGL.MatchString(p.Code):
-			//psWebProducts = append(psWebProducts, gl.ProcessGl(p, &prodCodes))
+			psWebProducts = append(psWebProducts, gl.ProcessGl(p, &prodCodes))
 			processed++
 
 		// GLPSZ
@@ -176,7 +180,7 @@ func main() {
 			regExpGLHOKVELO.MatchString(p.Code),
 			regExpCSCSGLPSZ.MatchString(p.Code),
 			regExpPPGLPSZ.MatchString(p.Code):
-			//psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
+			psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
 			processed++
 
 			/*
