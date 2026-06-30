@@ -6,12 +6,8 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"ws-updater/csk"
 	"ws-updater/db"
-	"ws-updater/flyer"
-	"ws-updater/gl"
 	"ws-updater/ks"
-	"ws-updater/mgbf"
 	"ws-updater/models"
 
 	"github.com/gocarina/gocsv"
@@ -127,7 +123,7 @@ func SavePrestaFile(products []models.PsProduct) {
 }
 
 func main() {
-	var srWebProducts []models.WsProduct
+	// var srWebProducts []models.WsProduct
 	var psWebProducts []models.PsProduct
 	products, prodCodes := db.FetchProducts()
 
@@ -152,7 +148,7 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, ks.ProcessKs1(p, &prodCodes))
+			psWebProducts = append(psWebProducts, ks.ProcessKs(p, &prodCodes))
 			processed++
 
 		// GL
@@ -163,8 +159,9 @@ func main() {
 			regExpGLVELO.MatchString(p.Code),
 			regExpCSCSGL.MatchString(p.Code),
 			regExpPPGL.MatchString(p.Code):
-			srWebProducts = append(srWebProducts, gl.ProcessGl(p))
+			//psWebProducts = append(psWebProducts, gl.ProcessGl(p, &prodCodes))
 			processed++
+
 		// GLPSZ
 		case regExpGLPSZ.MatchString(p.Code),
 			regExpGLPSZ.MatchString(p.Code),
@@ -179,24 +176,26 @@ func main() {
 			regExpGLHOKVELO.MatchString(p.Code),
 			regExpCSCSGLPSZ.MatchString(p.Code),
 			regExpPPGLPSZ.MatchString(p.Code):
-			srWebProducts = append(srWebProducts, gl.ProcessGlPsz(p))
-			processed++
-		// Csapkinyomók
-		case regExpCSK.MatchString(p.Code):
-			srWebProducts = append(srWebProducts, csk.ProcessCsk(p))
+			//psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
 			processed++
 
-		// Boronafogak
-		case regExpMGBF.MatchString(p.Code):
-			srWebProducts = append(srWebProducts, mgbf.ProcessMgbf(p))
-			processed++
+			/*
+				// Csapkinyomók
+				case regExpCSK.MatchString(p.Code):
+					srWebProducts = append(srWebProducts, csk.ProcessCsk(p))
+					processed++
 
-		// Flyer
-		case regExpFL.MatchString(p.Code),
-			regExpFLCS.MatchString(p.Code):
-			srWebProducts = append(srWebProducts, flyer.ProcessFlyer(p))
-			processed++
+				// Boronafogak
+				case regExpMGBF.MatchString(p.Code):
+					srWebProducts = append(srWebProducts, mgbf.ProcessMgbf(p))
+					processed++
 
+				// Flyer
+				case regExpFL.MatchString(p.Code),
+					regExpFLCS.MatchString(p.Code):
+					srWebProducts = append(srWebProducts, flyer.ProcessFlyer(p))
+					processed++
+			*/
 		default:
 			//w.WriteString("Hiba: " + p.Code + "\n")
 			ignored++

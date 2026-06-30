@@ -10,10 +10,10 @@ import (
 )
 
 var GLParms = map[string]map[string]string{
-	"08A1":  {"Osztas": "12,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "21,7"},
+	"08A1":  {"Osztas": "12,7,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "21,7"},
 	"10A1":  {"Osztas": "15,875", "Belsoheveder": "9,4", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "25,9"},
 	"12A1":  {"Osztas": "19,05", "Belsoheveder": "12,57", "Csapatmero": "5,94", "Gorgoatmero": "11,91", "Csaphossz": "31,5"},
-	"16A1":  {"Osztas": "25,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "38,9"},
+	"16A1":  {"Osztas": "25,4,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "38,9"},
 	"20A1":  {"Osztas": "31,75", "Belsoheveder": "18,9", "Csapatmero": "9,53", "Gorgoatmero": "19,05", "Csaphossz": "45,2"},
 	"24A1":  {"Osztas": "38,1", "Belsoheveder": "25,22", "Csapatmero": "11,1", "Gorgoatmero": "22,23", "Csaphossz": "55,5"},
 	"28A1":  {"Osztas": "44,45", "Belsoheveder": "25,22", "Csapatmero": "12,7", "Gorgoatmero": "25,4", "Csaphossz": "59,3"},
@@ -21,10 +21,10 @@ var GLParms = map[string]map[string]string{
 	"36A1":  {"Osztas": "57,15", "Belsoheveder": "35,48", "Csapatmero": "17,46", "Gorgoatmero": "35,71", "Csaphossz": ""},
 	"40A1":  {"Osztas": "63,5", "Belsoheveder": "37,85", "Csapatmero": "19,85", "Gorgoatmero": "39,68", "Csaphossz": "85,4"},
 	"48A1":  {"Osztas": "76,2", "Belsoheveder": "47,35", "Csapatmero": "23,81", "Gorgoatmero": "47,63", "Csaphossz": "103,1"},
-	"08A2":  {"Osztas": "12,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "36,2"},
+	"08A2":  {"Osztas": "12,7,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "36,2"},
 	"10A2":  {"Osztas": "15,875", "Belsoheveder": "9,4", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "44"},
 	"12A2":  {"Osztas": "19,05", "Belsoheveder": "12,57", "Csapatmero": "5,94", "Gorgoatmero": "11,91", "Csaphossz": "44,4"},
-	"16A2":  {"Osztas": "25,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "68,1"},
+	"16A2":  {"Osztas": "25,4,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "68,1"},
 	"20A2":  {"Osztas": "31,75", "Belsoheveder": "18,9", "Csapatmero": "9,53", "Gorgoatmero": "19,05", "Csaphossz": "81,2"},
 	"24A2":  {"Osztas": "38,1", "Belsoheveder": "25,22", "Csapatmero": "11,1", "Gorgoatmero": "22,23", "Csaphossz": "100,9"},
 	"28A2":  {"Osztas": "44,45", "Belsoheveder": "25,22", "Csapatmero": "12,7", "Gorgoatmero": "25,4", "Csaphossz": "108,2"},
@@ -32,10 +32,10 @@ var GLParms = map[string]map[string]string{
 	"36A2":  {"Osztas": "57,15", "Belsoheveder": "35,48", "Csapatmero": "17,46", "Gorgoatmero": "35,71", "Csaphossz": ""},
 	"40A2":  {"Osztas": "63,5", "Belsoheveder": "37,85", "Csapatmero": "19,85", "Gorgoatmero": "39,68", "Csaphossz": "157"},
 	"48A2":  {"Osztas": "76,2", "Belsoheveder": "47,35", "Csapatmero": "23,81", "Gorgoatmero": "47,63", "Csaphossz": "191"},
-	"08A3":  {"Osztas": "12,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "50,6"},
+	"08A3":  {"Osztas": "12,7,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "50,6"},
 	"10A3":  {"Osztas": "15,875", "Belsoheveder": "9,4", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "62"},
 	"12A3":  {"Osztas": "19,05", "Belsoheveder": "12,57", "Csapatmero": "5,94", "Gorgoatmero": "11,91", "Csaphossz": "77,2"},
-	"16A3":  {"Osztas": "25,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "97,1"},
+	"16A3":  {"Osztas": "25,4,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "97,1"},
 	"20A3":  {"Osztas": "31,75", "Belsoheveder": "18,9", "Csapatmero": "9,53", "Gorgoatmero": "19,05", "Csaphossz": "117,2"},
 	"24A3":  {"Osztas": "38,1", "Belsoheveder": "25,22", "Csapatmero": "11,1", "Gorgoatmero": "22,23", "Csaphossz": "146,4"},
 	"28A3":  {"Osztas": "44,45", "Belsoheveder": "25,22", "Csapatmero": "12,7", "Gorgoatmero": "25,4", "Csaphossz": "157"},
@@ -43,10 +43,10 @@ var GLParms = map[string]map[string]string{
 	"36A3":  {"Osztas": "57,15", "Belsoheveder": "35,48", "Csapatmero": "17,46", "Gorgoatmero": "35,71", "Csaphossz": ""},
 	"40A3":  {"Osztas": "63,5", "Belsoheveder": "37,85", "Csapatmero": "19,85", "Gorgoatmero": "39,68", "Csaphossz": "228,5"},
 	"48A3":  {"Osztas": "76,2", "Belsoheveder": "47,35", "Csapatmero": "23,81", "Gorgoatmero": "47,63", "Csaphossz": "278,8"},
-	"08AH1": {"Osztas": "12,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "19,9"},
+	"08AH1": {"Osztas": "12,7,7", "Belsoheveder": "7,85", "Csapatmero": "3,96", "Gorgoatmero": "7,95", "Csaphossz": "19,9"},
 	"10AH1": {"Osztas": "15,875", "Belsoheveder": "9,4", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "24,3"},
 	"12AH1": {"Osztas": "19,05", "Belsoheveder": "12,57", "Csapatmero": "5,94", "Gorgoatmero": "11,91", "Csaphossz": "31"},
-	"16AH1": {"Osztas": "25,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "42,4"},
+	"16AH1": {"Osztas": "25,4,4", "Belsoheveder": "15,75", "Csapatmero": "7,92", "Gorgoatmero": "15,88", "Csaphossz": "42,4"},
 	"20AH1": {"Osztas": "31,75", "Belsoheveder": "18,9", "Csapatmero": "9,53", "Gorgoatmero": "19,05", "Csaphossz": "50,6"},
 	"24AH1": {"Osztas": "38,1", "Belsoheveder": "25,22", "Csapatmero": "11,1", "Gorgoatmero": "22,23", "Csaphossz": "61,4"},
 	"28AH1": {"Osztas": "44,45", "Belsoheveder": "25,22", "Csapatmero": "12,7", "Gorgoatmero": "25,4", "Csaphossz": "66,1"},
@@ -72,10 +72,10 @@ var GLParms = map[string]map[string]string{
 	"04B1": {"Osztas": "6", "Belsoheveder": "2,8", "Csapatmero": "1,85", "Gorgoatmero": "4", "Csaphossz": "7,8"},
 	"05B1": {"Osztas": "8", "Belsoheveder": "3", "Csapatmero": "2,31", "Gorgoatmero": "5", "Csaphossz": "11,7"},
 	"06B1": {"Osztas": "9,525", "Belsoheveder": "5,72", "Csapatmero": "3,28", "Gorgoatmero": "6,35", "Csaphossz": "16,8"},
-	"08B1": {"Osztas": "12", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "20,9"},
+	"08B1": {"Osztas": "12,7", "Belsoheveder": "7,75", "Csapatmero": "4,45", "Gorgoatmero": "8,51", "Csaphossz": "20,9"},
 	"10B1": {"Osztas": "15,875", "Belsoheveder": "9,65", "Csapatmero": "5,08", "Gorgoatmero": "10,16", "Csaphossz": "23,7"},
 	"12B1": {"Osztas": "19,05", "Belsoheveder": "11,68", "Csapatmero": "5,72", "Gorgoatmero": "12,07", "Csaphossz": "27,3"},
-	"16B1": {"Osztas": "25", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "41,5"},
+	"16B1": {"Osztas": "25,4", "Belsoheveder": "17,02", "Csapatmero": "8,28", "Gorgoatmero": "15,88", "Csaphossz": "41,5"},
 	"20B1": {"Osztas": "31,75", "Belsoheveder": "19,56", "Csapatmero": "10,19", "Gorgoatmero": "19,05", "Csaphossz": "46"},
 	"24B1": {"Osztas": "38", "Belsoheveder": "25,4", "Csapatmero": "14,63", "Gorgoatmero": "25,4", "Csaphossz": "58,5"},
 	"28B1": {"Osztas": "44,45", "Belsoheveder": "30,99", "Csapatmero": "15,9", "Gorgoatmero": "27,94", "Csaphossz": "69,6"},
@@ -170,7 +170,7 @@ var GLParms = map[string]map[string]string{
 // Görgősláncok
 //*******************************************************************
 
-func ProcessGl(p models.KsProduct) models.WsProduct {
+func ProcessGl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	var (
 		// Alap görgőslánc
 		regExpGL = regexp.MustCompile(`N-(GL)-([0-9]+)-([0-9ABC]+)([123])$`)
@@ -189,46 +189,72 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 
 		match          []string
 		family         string
-		manufacturerId int
-		numOfRows      string
-		chainType      string
+		manufacturerId string
+		sorokszama     string
+		productType    string
+		pStr           string
 	)
-	w := models.WsProduct{}
-
-	// Az alapmodell paraméterei, ezeket írjuk felül az egyes típusoknál.
-	w.SKU = p.Code
-	w.Anyag = "Acél"
-	w.Kivitel = "Normál"    // Normál | Heavy (erősített)
-	w.Csaptipus = "Tömör"   // Tömör | Csőcsapos
-	w.Szemforma = "Piskóta" // Piskóta | Párhuzamos profilú | Hajlított
-	w.Category = "Görgőslácok"
-	w.ClassId = "Görgőslánc"
-	w.Quantity = fmt.Sprintf("%.1f", p.Stock)
-	w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
-	w.TaxClass = "27%"
-	w.QuantityUnit = p.Unit
-	w.Weight = fmt.Sprintf("%.1f", p.Weight)
-	w.WeightClass = "kg."
-
-	// Ha nincs belőle raktáron, nem elérhető.
-	qty, _ := strconv.ParseFloat(w.Quantity, 64)
-	if qty == 0 {
-		w.ShortDescription += models.JelenlegNemElerheto
-	} else {
-		if slices.Contains(models.CsakRendelesre, family) {
-			w.ShortDescription += models.CsakRendelesreLeiras
-		}
+	psp := models.PsProduct{}
+	features := map[string]string{
+		"Anyag":                 "", // Acél |
+		"Erősített":             "", // Igen|Nem
+		"Osztás":                "", // Típus: Agyas lánckerék | Laplánckerék
+		"Belső hevedertávolság": "", // Fogedzett: Igen | Nem
+		"Csapátmérő":            "", // Fogak száma
+		"Görgőátmérő":           "", // mm
+		"Csaphossz":             "", // mm
+		"Csaptípus":             "", // Tömör|Csőcsap
+		"Szemforma":             "", // Piskóta|Egyenes|Hajlított
+		"Kivitel":               "", // Egysoros | kétsoros | hármosoros (sorokszama alapján képezve)
 	}
-	w.ShortDescription += models.Zaradek
+
+	psp.ID = ""            // Az ID üres, cikkszámokkal dogozunk
+	psp.Reference = p.Code // Ez a cikkszám, ID helyett használjuk
+	psp.Active = "1"
+	psp.PriceTaxExcluded = fmt.Sprintf("%.0f", p.WebPrice)
+	psp.UnitPrice = fmt.Sprintf("%.0f", p.WebPrice) // TODO
+	psp.TaxRulesID = "1"                            // ÁFA kulcs 27%
+	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
+	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
+	psp.Unity = "m"
+	psp.TextInStock = "m"          // méter
+	psp.TextBackorderAllowed = "m" // méter
+	psp.Categories = "Láncok/Görgősláncok"
+	psp.TextInStock = "Raktáron"
+	psp.TextBackorderAllowed = "Rendelhető"
+	psp.ShowPrice = "1"            // TODO
+	psp.OnSale = "0"               // Akció számítása
+	psp.DiscountAmount = ""        // TODO
+	psp.DiscountPercent = "0"      // TODO
+	psp.DiscountFrom = ""          // TODO
+	psp.DiscountTo = ""            // TODO
+	psp.DeleteExistingImages = "0" // TODO
 
 	// Görgőslánc: N-GL-5-24B3
 	// N-(GL)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
+
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[productType+sorokszama]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Standard Görgőslánc", productType, sorokszama)
+		psp.Tags = "Standard,Görgőslánc"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,standard,görgőslánc"
+		//fmt.Printf("%s: (%s) -> %s\n", p.Code, productType, features["Csaphossz"])
+
 	}
 
 	// Rozsdamentes görgőslánc
@@ -236,11 +262,25 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpSSGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Anyag = "Rozsdamentes"
+		features["Anyag"] = "Rozsdamentes acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Rozsdamentes Görgőslánc", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Görgőslánc"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,görgőslánc"
+
 	}
 
 	// Heavy görgőslánc
@@ -248,11 +288,24 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpGL_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Kivitel = "Heavy (erősített)" // Heavy
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Igen"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Erősített Görgőslánc", productType, sorokszama)
+		psp.Tags = "Erősített,Heavy,Görgőslánc"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,erősített,heavy,görgőslánc"
 	}
 
 	// Mofa görgőslánc
@@ -260,11 +313,24 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpGLMOFA.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Name = fmt.Sprintf("%s MOFA Görgőslánc", chainType)
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s MOFA Görgőslánc", productType, sorokszama)
+		psp.Tags = "MOFA,Görgőslánc"
+		psp.MetaKeywords = "Mofa,görgőslánc"
 	}
 
 	// Velo görgőslánc
@@ -272,11 +338,23 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpGLVELO.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Velo mindig egysoros
-		chainType = fmt.Sprintf("%s", match[3])
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = "1" // Velo mindig egysoros
 
-		w.Name = fmt.Sprintf("%s VELO Görgőslánc", chainType)
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Velo Görgőslánc", productType, sorokszama)
+		psp.Tags = "Standard,Görgőslánc"
+		psp.MetaKeywords = "Velo,görgőslánc"
 	}
 
 	// Csőcsapos
@@ -284,11 +362,23 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpCSCSGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Mindig egysoros
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = "1" // Mindig egysoros
 
-		w.Csaptipus = "Csőcsap"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Csőcsapos"
+		features["Szemforma"] = "Piskóta"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Csőcsapos Standard Görgőslánc", productType, sorokszama)
+		psp.Tags = "Csőcsapos,Görgőslánc"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,csőcsapos,görgőslánc"
 	}
 
 	// Párhuzamos profilú
@@ -296,38 +386,73 @@ func ProcessGl(p models.KsProduct) models.WsProduct {
 	match = regExpPPGL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Szemforma = "Párhuzamos profilú"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Párhuzamos profilú"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Párhuzamos Profilú Standard Görgőslánc", productType, sorokszama)
+		psp.Tags = "Standard,Párhuzamos profilú,Görgőslánc"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,párhuzamos profilú,standard,görgőslánc"
 	}
 
-	w.Manufacturer = models.Manufacturers[manufacturerId]
-	if w.Name == "" {
-		w.Name = fmt.Sprintf("%s Görgőslánc", chainType) // 08B1 Görgőslánc
+	// Gyártó beállítása
+	mIdTmp, _ := strconv.Atoi(manufacturerId)
+	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+
+	kivitelTmp := "Standard"
+	if features["Erősített"] == "Igen" {
+		kivitelTmp = "Erősített"
 	}
-	if w.Image == "" {
-		w.Image = fmt.Sprintf("product/N-%s-%s.png", family, numOfRows)
-	}
-	if w.ImageAdditional == "" {
-		w.ImageAdditional = fmt.Sprintf("product/D-%s-%s.png", family, numOfRows)
+	psp.Summary = fmt.Sprintf("%s , %s soros, %s mm osztású, %s mm belső hevedertávolságú, %s mm görgőátmérőjű %s %s görgőslánc.", psp.Manufacturer, sorokszama, features["Osztás"], features["Belső hevedertávolság"], features["Görgőátmérő"], strings.ToLower(kivitelTmp), strings.ToLower(features["Anyag"]))
+	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
+	psp.MetaDescription = strings.TrimRight(psp.Summary, ".")
+	psp.Summary += models.Zaradek
+
+	psp.MetaTitle = psp.Name
+	psp.URLRewritten = p.Code
+
+	// Képek előállítása
+	if psp.ImageURLs == "" {
+		psp.ImageURLs = fmt.Sprintf(
+			"%s/N-%s-%s.png,%s/D-%s-%s.png",
+			models.ImagesBase, family, sorokszama,
+			models.ImagesBase, family, sorokszama)
+		psp.ImageAltTexts = psp.Name
 	}
 
-	w.Osztas = GLParms[chainType]["Osztas"]
-	w.BelsoHeveder = GLParms[chainType]["Belsoheveder"]
-	w.GorgoAtmero = GLParms[chainType]["Gorgoatmero"]
-	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
-	w.CsapHossz = GLParms[chainType]["Csaphossz"]
-	w.ShortDescription = fmt.Sprintf("%s gyártmányú %s soros, %s mm. osztású, %s mm belső hevedertávolságú, %s mm. görgőátmérőjű %s %s görgőslánc.", w.Manufacturer, numOfRows, w.Osztas, w.BelsoHeveder, w.GorgoAtmero, strings.ToLower(w.Kivitel), strings.ToLower(w.Anyag))
+	// Speciális tulajdonságok beállítása
+	psp.Features = models.MkFeaturesList(features)
 
-	return w
+	// Kapcsolódó termékek
+	psp.Accessories = ""
+	// TODO Ideiglenesen kivesszük, mert ha nem ltezik a termék, nagyon lelassul
+	//rgxStr := fmt.Sprintf(`^N-GL-[0-9]+-%s%s.*`, productType, sorokszama)
+	//psp.Accessories += models.getRelatedProductIds(rgxStr, prodCodes)
+
+	// Rendelhető?
+	psp.AvailableForOrder = "1"
+	if slices.Contains(models.CsakRendelesre, family) {
+		psp.AvailableForOrder = "0"
+	}
+
+	return psp
 }
 
 // *******************************************************************
 // Görgősláncok patentszemei
 // *******************************************************************
-func ProcessGlPsz(p models.KsProduct) models.WsProduct {
+func ProcessGlPsz(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	var (
 		// Normál
 		regExpGLPSZ = regexp.MustCompile(`N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])$`)
@@ -360,46 +485,99 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 
 		match          []string
 		family         string
-		manufacturerId int
-		numOfRows      string
-		chainType      string
+		manufacturerId string
+		sorokszama     string
+		productType    string
+		pStr           string
 	)
-	w := models.WsProduct{}
+	psp := models.PsProduct{}
+	features := map[string]string{
+		"Anyag":                 "", // Acél |
+		"Erősített":             "", // Igen|Nem
+		"Osztás":                "", // Típus: Agyas lánckerék | Laplánckerék
+		"Belső hevedertávolság": "", // Fogedzett: Igen | Nem
+		"Csapátmérő":            "", // Fogak száma
+		"Görgőátmérő":           "", // mm
+		"Csaphossz":             "", // mm
+		"Csaptípus":             "", // Tömör|Csőcsapos
+		"Szemforma":             "", // Piskóta|Egyenes|Hajlított
+		"Kivitel":               "", // Egysoros | kétsoros | hármosoros (sorokszama alapján képezve)
+		"Rögzítés":              "", // Rugós lemezes | Sasszeges
+	}
+
 	// Általános tulajdonságok
-	w.SKU = p.Code
-	w.Anyag = "Acél"
-	w.Kivitel = "Normál"    // Normál | Heavy
-	w.Rogzites = "Lemezes"  // Lemezes | Sasszeges
-	w.Csaptipus = "Tömör"   // Tömör | Csőcsapos
-	w.Szemforma = "Piskóta" // Piskóta | Párhuzamos Profilú | Hajlított
-	w.WeightClass = "kg."
-	w.Category = "Patentszemek"
-	w.ClassId = "Görgőslánc"
-	w.Quantity = fmt.Sprintf("%.1f", p.Stock)
-	w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
-	w.TaxClass = "27%"
-	w.QuantityUnit = p.Unit
-	w.Weight = fmt.Sprintf("%.1f", p.Weight)
+	// w.SKU = p.Code
+	// w.Anyag = "Acél"
+	// w.Kivitel = "Normál"    // Normál | Heavy
+	// w.Rogzites = "Lemezes"  // Lemezes | Sasszeges
+	// w.Csaptipus = "Tömör csapos"   // Tömör | Csőcsapos
+	// w.Szemforma = "Piskóta" // Piskóta | Párhuzamos Profilú | Hajlított
+	// w.WeightClass = "kg."
+	// w.Category = "Patentszemek"
+	// w.ClassId = "Görgőslánc"
+	// w.Quantity = fmt.Sprintf("%.1f", p.Stock)
+	// w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
+	// w.TaxClass = "27%"
+	// w.QuantityUnit = p.Unit
+	// w.Weight = fmt.Sprintf("%.1f", p.Weight)
 
 	// Ha nincs belőle raktáron, nem elérhető.
-	qty, _ := strconv.ParseFloat(w.Quantity, 64)
-	if qty == 0 {
-		w.ShortDescription += models.JelenlegNemElerheto
-	} else {
-		if slices.Contains(models.CsakRendelesre, family) {
-			w.ShortDescription += models.CsakRendelesreLeiras
-		}
-	}
-	w.ShortDescription += models.Zaradek
+	// qty, _ := strconv.ParseFloat(w.Quantity, 64)
+	// if qty == 0 {
+	// 	w.ShortDescription += models.JelenlegNemElerheto
+	// } else {
+	// 	if slices.Contains(models.CsakRendelesre, family) {
+	// 		w.ShortDescription += models.CsakRendelesreLeiras
+	// 	}
+	// }
+	// w.ShortDescription += models.Zaradek
+
+	psp.ID = ""            // Az ID üres, cikkszámokkal dogozunk
+	psp.Reference = p.Code // Ez a cikkszám, ID helyett használjuk
+	psp.Active = "1"
+	psp.PriceTaxExcluded = fmt.Sprintf("%.0f", p.WebPrice)
+	psp.UnitPrice = fmt.Sprintf("%.0f", p.WebPrice) // TODO
+	psp.TaxRulesID = "1"                            // ÁFA kulcs 27%
+	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
+	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
+	psp.Unity = "db"
+	psp.TextInStock = "db"          // méter
+	psp.TextBackorderAllowed = "db" // méter
+	psp.Categories = "Láncok/Patentszemek"
+	psp.TextInStock = "Raktáron"
+	psp.TextBackorderAllowed = "Rendelhető"
+	psp.ShowPrice = "1"            // TODO
+	psp.OnSale = "0"               // Akció számítása
+	psp.DiscountAmount = ""        // TODO
+	psp.DiscountPercent = "0"      // TODO
+	psp.DiscountFrom = ""          // TODO
+	psp.DiscountTo = ""            // TODO
+	psp.DeleteExistingImages = "0" // TODO
 
 	// Normál patetszem
 	// N-(GLPSZ)-([0-9]+)-([0-9ABC]+)([123])$
 	match = regExpGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
+
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[productType+sorokszama]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Normál"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Standard Patentszem", productType, sorokszama)
+		psp.Tags = "Standard,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,standard,patentszem"
 	}
 
 	// Heavy patentszem
@@ -407,11 +585,25 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLPSZ_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Kivitel = "Heavy (erősített)"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Igen"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Normál"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Erősített Patentszem", productType, sorokszama)
+		psp.Tags = "Erősített,Heavy,patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,erősített,heavy,patentszem"
 	}
 
 	// Sasszeges, normál patentszem
@@ -419,11 +611,25 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLSPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Rogzites = "Sasszeges"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Sasszeges"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Acél Sasszeges Patentszem", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Sasszeg,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,sasszeg,patentszem"
 	}
 
 	// Rozsdamentes görgőslánc patentszem rugós lemezes
@@ -431,11 +637,25 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpSSGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Anyag = "Rozsdamentes"
+		features["Anyag"] = "Rozsdamentes acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Rugós lemezes"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Rozsdamentes Patentszem", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,patentszem"
 	}
 
 	// Rozsdamentes görgőslánc patentszem sasszeges
@@ -443,12 +663,25 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpSSGLSPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Anyag = "Rozsdamentes"
-		w.Rogzites = "Sasszeges"
+		features["Anyag"] = "Rozsdamentes acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Sasszeges"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Rozsdamentes Sasszeges Patentszem", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Sasszeg,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,sasszeg,patentszem"
 	}
 
 	// Sasszeges hajlított patentszem (a hajlított mindig sasszeges)
@@ -456,26 +689,51 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLHOK.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		productType = match[3]
+		sorokszama = match[4]
+		pStr = productType + sorokszama
 
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Hajlított"
+		features["Rögzítés"] = "Sasszeges"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Rozsdamentes Hajlított Sasszeges Patentszem", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Sasszeg,Hajlított,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,sasszeg,hajlított,patentszem"
 	}
 
-	// Erősített görgőslánc rugós sasszeges hajlított patentszem
+	// Erősített görgőslánc sasszeges hajlított patentszem
 	// N-(GLHOK)-([0-9]+)-([0-9ABC]+)([123])_H$
 	match = regExpGLHOK_H.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		sorokszama = match[4]
+		productType = match[3]
+		pStr = productType + sorokszama
 
-		w.Kivitel = "Heavy (erősített)" // Heavy
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Igen"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Hajlított"
+		features["Rögzítés"] = "Sasszeges"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Erősített Hajlított Sasszeges Patentszem", productType, sorokszama)
+		psp.Tags = "Erősített,Heavy,Sasszeg,Hajlított,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,erősített,heavy,sasszeges,hajlított,patentszem"
 	}
 
 	// Rozsdamentes görgősláncok rugós sasszeges hajlított patentszeme
@@ -483,12 +741,24 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpSSGLHOK.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
-		w.Anyag = "Rozsdamentes"
-		w.Szemforma = "Hajlított"
-		w.Rogzites = "Sasszeges"
+		manufacturerId = match[2]
+		sorokszama = match[4]
+		productType = match[3]
+		pStr = productType + sorokszama
+
+		features["Anyag"] = "Rozsdamentes Acél"
+		features["Erősített"] = "Igen"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Sasszeges"
+		features["Szemforma"] = "Hajlított"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Rozsdamentes Hajlított Sasszeges Patentszem", productType, sorokszama)
+		psp.Tags = "Rozsdamentes,Hajlított,Sasszeg,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,rozsdamentes,sasszeges,hajlított,sasszeg,patentszem"
 	}
 
 	// GLPSZ MOFA
@@ -496,11 +766,24 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLPSZMOFA.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
+		manufacturerId = match[2]
+		sorokszama = match[4]
+		productType = fmt.Sprintf("%s%s_MOFA", match[3], sorokszama)
 
-		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Rugós lemezes"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s MOFA Patentszem", productType, sorokszama)
+		psp.Tags = "MOFA,Patentszem"
+		psp.MetaKeywords = "Mofa,Patentszem"
 	}
 
 	// Hajlított MOFA
@@ -508,12 +791,23 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLHOKMOFA.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = match[4]
-		chainType = fmt.Sprintf("%s%s_MOFA", match[3], numOfRows)
+		manufacturerId = match[2]
+		sorokszama = match[4]
+		productType = fmt.Sprintf("%s%s_MOFA", match[3], sorokszama)
 
-		w.Name = fmt.Sprintf("%s %s MOFA Patentszem", chainType, w.Anyag)
-		w.Szemforma = "hajlított"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Hajlított"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s MOFA Patentszem", productType, sorokszama)
+		psp.Tags = "MOFA,Patentszem,Összekötő szem"
+		psp.MetaKeywords = "Mofa,Patentszem,összekötő szem"
 	}
 
 	// VELO Patentszem
@@ -521,12 +815,34 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLPSZVELO.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Velo mindig egysoros
-		chainType = fmt.Sprintf("%s", match[3])
-		w.Name = fmt.Sprintf("%s %s VELO Patentszem", chainType, w.Anyag)
-		w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", numOfRows)
-		w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", numOfRows)
+		manufacturerId = match[2]
+		sorokszama = "1" // Velo mindig egysoros
+		productType = fmt.Sprintf("%s", match[3])
+
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Piskóta"
+		features["Rögzítés"] = "Rugós lemezes"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s VELO Patentszem", productType, sorokszama)
+		psp.Tags = "VELO,Patentszem"
+		psp.MetaKeywords = "Velo,Patentszem"
+
+		// Egyedi képei vannak
+		psp.ImageURLs = fmt.Sprintf(
+			"%s/N-GLPSZ-%s.png,%s/D-GLPSZ-%s.png",
+			models.ImagesBase, sorokszama,
+			models.ImagesBase, sorokszama)
+		psp.ImageAltTexts = psp.Name
+
+		// w.Image = fmt.Sprintf("product/N-GLPSZ-%s.png", sorokszama)
+		// w.ImageAdditional = fmt.Sprintf("product/D-GLPSZ-%s.png", sorokszama)
 	}
 
 	// Hajlított VELO
@@ -534,12 +850,23 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpGLHOKVELO.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Velo mindig egysoros
-		chainType = fmt.Sprintf("%s", match[3])
+		manufacturerId = match[2]
+		sorokszama = "1" // Velo mindig egysoros
+		productType = fmt.Sprintf("%s", match[3])
 
-		w.Name = fmt.Sprintf("%s %s VELO Patentszem", chainType, w.Anyag)
-		w.Szemforma = "hajlított"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[pStr]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Tömör csapos"
+		features["Szemforma"] = "Hajlított"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s VELO Patentszem", productType, sorokszama)
+		psp.Tags = "VELO,Patentszem,Összekötő szem"
+		psp.MetaKeywords = "Velo,Patentszem,Összekötő szem"
 	}
 
 	// Csőcsapos egyenes patentszem
@@ -547,11 +874,25 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpCSCSGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Mindig egysoros
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		sorokszama = "1" // Mindig egysoros
+		productType = match[3]
+		pStr = productType + sorokszama
 
-		w.Csaptipus = "Csőcsap"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[productType+sorokszama]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Csőcsapos"
+		features["Szemforma"] = "Egyenes"
+		features["Rögzítés"] = "Rugós lemezes"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Csőcsapos Egyenes Patentszem", productType, sorokszama)
+		psp.Tags = "Csőcsap,Egyenes,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,egyenes,csőcsap,patentszem"
 	}
 
 	// Párhuzamos profilú patentszem
@@ -559,28 +900,71 @@ func ProcessGlPsz(p models.KsProduct) models.WsProduct {
 	match = regExpPPGLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId, _ = strconv.Atoi(match[2])
-		numOfRows = "1" // Mindig egysoros
-		chainType = fmt.Sprintf("%s%s", match[3], numOfRows)
+		manufacturerId = match[2]
+		sorokszama = "1" // Mindig egysoros
+		productType = match[3]
 
-		w.Szemforma = "Párhuzamos profilú"
+		features["Anyag"] = "Acél"
+		features["Erősített"] = "Nem"
+		features["Osztás"] = GLParms[pStr]["Osztas"]
+		features["Belső hevedertávolság"] = GLParms[pStr]["Belsoheveder"]
+		features["Görgőátmérő"] = GLParms[pStr]["Gorgoatmero"]
+		features["Csapátmérő"] = GLParms[productType+sorokszama]["Csapatmero"]
+		features["Csaphossz"] = GLParms[pStr]["Csaphossz"]
+		features["Csaptípus"] = "Csőcsapos"
+		features["Szemforma"] = "Párhuzamos profilú"
+		features["Rögzítés"] = "Rugós lemezes"
+		features["Kivitel"] = models.Sornevek[sorokszama]
+		psp.Name = fmt.Sprintf("%s%s Standard Patentszem", productType, sorokszama)
+		psp.Tags = "Standard,Patentszem"
+		psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros,standard,patentszem"
 	}
 
-	if w.Name == "" {
-		w.Name = fmt.Sprintf("%s %s Patentszem", chainType, w.Anyag)
+	// Gyártó beállítása
+	mIdTmp, _ := strconv.Atoi(manufacturerId)
+	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+
+	kemenysegTmp := "Standard"
+	if features["Erősített"] == "Igen" {
+		kemenysegTmp = "Erősített"
 	}
-	if w.Image == "" {
-		w.Image = fmt.Sprintf("product/N-%s-%s.png", family, numOfRows)
-	}
-	if w.ImageAdditional == "" {
-		w.ImageAdditional = fmt.Sprintf("product/D-%s-%s.png", family, numOfRows)
+	psp.Summary = fmt.Sprintf(
+		"%s gyártmányú %s, %s mm osztású, %s mm belső hevedertávolságú, %s mm görgőátmérőjű %s szemformájú %s %s %s patentszem.",
+		psp.Manufacturer, strings.ToLower(models.Sornevek[sorokszama]),
+		features["Osztás"], features["Belső hevedertávolság"], features["Görgőátmérő"],
+		strings.ToLower(features["Szemforma"]),
+		strings.ToLower(features["Csaptípus"]), strings.ToLower(kemenysegTmp),
+		strings.ToLower(features["Anyag"]))
+	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
+	psp.MetaDescription = strings.TrimRight(psp.Summary, ".")
+	psp.Summary += models.Zaradek
+
+	psp.MetaTitle = psp.Name
+	psp.URLRewritten = p.Code
+
+	// Képek előállítása (a Velonál egyedileg készült)
+	if psp.ImageURLs == "" {
+		psp.ImageURLs = fmt.Sprintf(
+			"%s/N-%s-%s.png,%s/D-%s-%s.png",
+			models.ImagesBase, family, sorokszama,
+			models.ImagesBase, family, sorokszama)
+		psp.ImageAltTexts = psp.Name
 	}
 
-	w.Manufacturer = models.Manufacturers[manufacturerId]
-	w.Osztas = GLParms[chainType]["Osztas"]
-	w.CsapHossz = GLParms[chainType]["Csaphossz"]
-	w.CsapAtmero = GLParms[chainType]["Csapatmero"]
-	w.ShortDescription = fmt.Sprintf("%s %s soros %s rögzítésű %s %s patentszem %s csappal. Osztás: %s mm., csaphosszúság: %s mm., csapátmérő: %s mm.", w.Manufacturer, numOfRows, strings.ToLower(w.Rogzites), strings.ToLower(w.Szemforma), strings.ToLower(w.Anyag), strings.ToLower(w.Csaptipus), w.Osztas, w.CsapHossz, w.CsapAtmero)
+	// Speciális tulajdonságok beállítása
+	psp.Features = models.MkFeaturesList(features)
 
-	return w
+	// Kapcsolódó termékek
+	psp.Accessories = ""
+	// TODO Ideiglenesen kivesszük, mert ha nem ltezik a termék, nagyon lelassul
+	//rgxStr := fmt.Sprintf(`^N-GL-[0-9]+-%s%s.*`, productType, sorokszama)
+	//psp.Accessories += models.getRelatedProductIds(rgxStr, prodCodes)
+
+	// Rendelhető?
+	psp.AvailableForOrder = "1"
+	if slices.Contains(models.CsakRendelesre, family) {
+		psp.AvailableForOrder = "0"
+	}
+
+	return psp
 }

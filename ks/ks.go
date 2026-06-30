@@ -1,6 +1,7 @@
 package ks
 
-// Lánckerék szelet
+// Lánckerekek
+
 import (
 	"fmt"
 	"regexp"
@@ -10,7 +11,7 @@ import (
 	"ws-updater/models"
 )
 
-func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
+func ProcessKs(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	var (
 		regExpKS   = regexp.MustCompile(`N-(KS)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
 		regExpKS_G = regexp.MustCompile(`N-(KS)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
@@ -21,14 +22,12 @@ func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		regExpGKR      = regexp.MustCompile(`N-(GKR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
 		match          []string
 		family         string
-		productType    string
 		manufacturerId string
 		sorokszama     string
+		productType    string
 	)
 
 	psp := models.PsProduct{}
-	// Anyag: Acél|Rozsdamentes
-
 	features := map[string]string{
 		"Anyag":     "N/A", // Acél |
 		"Típus":     "N/A", // Típus: Agyas lánckerék | Laplánckerék
@@ -46,13 +45,14 @@ func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	psp.ID = ""            // Az ID üres, cikkszámokkal dogozunk
 	psp.Reference = p.Code // Ez a cikkszám, ID helyett használjuk
 	psp.Active = "1"
-	psp.Name = "terméknév" //p.Name
 	psp.PriceTaxExcluded = fmt.Sprintf("%.0f", p.WebPrice)
 	psp.UnitPrice = fmt.Sprintf("%.0f", p.WebPrice) // TODO
 	psp.TaxRulesID = "1"                            // ÁFA kulcs 27%
 	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
 	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
 	psp.Unity = "db"
+	psp.TextInStock = "db"          // darab
+	psp.TextBackorderAllowed = "db" // darab
 	psp.Categories = "Lánckerekek"
 	psp.TextInStock = "Raktáron"
 	psp.TextBackorderAllowed = "Rendelhető"
@@ -162,33 +162,35 @@ func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	// Termék név előállítása
 	psp.Name = fmt.Sprintf("%s-%s%sZ%s %s",
 		family, productType, sorokszama, features["Fogszám"], strings.ToLower(features["Típus"]))
-	if features["Típus"] == "Fogedzett" {
+	if features["Fogedzett"] == "Fogedzett" {
 		psp.Name += "G"
 	}
 
-	// Képek előállítása
-	psp.ImageURLs = fmt.Sprintf(
-		"%s/N-%s-%s.png,%s/D-%s-%s.png",
-		models.ImagesBase, family, sorokszama,
-		models.ImagesBase, family, sorokszama)
-	psp.ImageAltTexts = psp.Name
+	// A termékkép előállítása
+	if psp.ImageURLs == "" {
+		if features["Fogedzett"] == "Nem" {
+			psp.ImageURLs = fmt.Sprintf(
+				"%s/N-%s-%s.png,%s/D-%s-%s.png",
+				models.ImagesBase, family, sorokszama,
+				models.ImagesBase, family, sorokszama)
+		} else {
+			psp.ImageURLs = fmt.Sprintf(
+				"%s/N-%s-%s_G.png,%s/D-%s-%s_G.png",
+				models.ImagesBase, family, sorokszama,
+				models.ImagesBase, family, sorokszama)
+		}
+		psp.ImageAltTexts = psp.Name
+	}
 
 	// Speciális tulajdonságok beállítása
 	features["Kivitel"] = models.Sornevek[sorokszama]
-	i := 1
-	for k, v := range features {
-		psp.Features += fmt.Sprintf("%s:%s:%d,", k, v, i)
-		i++
-	}
-	if psp.Features != "" {
-		psp.Features = strings.TrimSuffix(psp.Features, ",")
-	}
+	psp.Features = models.MkFeaturesList(features)
 
 	// Kapcsolódó termékek
 	psp.Accessories = ""
 	// TODO Ideiglenesen kivesszük, mert ha nem ltezik a termék, nagyon lelassul
 	//rgxStr := fmt.Sprintf(`^N-GL-[0-9]+-%s%s.*`, productType, sorokszama)
-	//psp.Accessories += getRelatedProductIds(rgxStr, prodCodes)
+	//psp.Accessories += models.getRelatedProductIds(rgxStr, prodCodes)
 
 	// Rendelhető?
 	psp.AvailableForOrder = "1"
@@ -199,24 +201,6 @@ func ProcessKs1(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	//fmt.Printf("%s: %v\n", psp.Reference, psp.AvailableForOrder)
 
 	return psp
-}
-
-/************************************************************
-* Kpacsolódó termékek listájának előállítása
-************************************************************/
-func getRelatedProductIds(rgxStr string, prodCodes *[]string) string {
-	accessories := ""
-	rgx := regexp.MustCompile(rgxStr)
-	for _, code := range *prodCodes {
-		match := rgx.FindStringSubmatch(code)
-		if match != nil {
-			accessories += code + ","
-		}
-	}
-	if accessories != "" {
-		accessories = strings.TrimSuffix(accessories, ",")
-	}
-	return accessories
 }
 
 // func ProcessKs(p models.KsProduct) models.WsProduct {
