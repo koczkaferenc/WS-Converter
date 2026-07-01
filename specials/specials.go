@@ -10,6 +10,7 @@ import (
 type part struct {
 	partCode    string
 	requiredQty float64
+	unit        string
 	available   int
 }
 
@@ -43,7 +44,7 @@ var specialProducts = map[string]specialProduct{
 		// Fix ár esetén nem számolunk vele
 		multiplier: 0,
 		// Vagy itt kitöltjük, vagy számítjuk
-		description: "McHale furfangoslánc két elemből.",
+		description: "McHale furfangoslánc két elemből, 180 szemmel.",
 		// Ha 0, nem dolgozzuk fel, ha 1, akkor megnézzük, hogy a részegységek
 		// Mindegyike rendelkezésre áll-e, és csak akkor érhető el.
 		available: 0,
@@ -55,7 +56,9 @@ func computeParms(psWebProducts *[]models.PsProduct, product *specialProduct) bo
 	totalWeight := 0.0
 	totalPrice := 0.0
 	fmt.Println("Részegység:")
-	for _, p := range product.parts {
+
+	for i := range product.parts {
+		p := &product.parts[i]
 		partFound := false
 		qtyInStock := 0
 		for _, ps := range *psWebProducts {
@@ -82,6 +85,7 @@ func computeParms(psWebProducts *[]models.PsProduct, product *specialProduct) bo
 					currentWeight)
 
 				product.imageUrls += ps.ImageURLs + ","
+				p.unit = ps.Unity
 			}
 		}
 		if !partFound {
@@ -107,6 +111,12 @@ func ProcessSpecialProducts(psWebProducts []models.PsProduct) []models.PsProduct
 		item := specialProducts[s]
 		// Mennyiség, súly, összár kiszámítása
 		computeParms(&psWebProducts, &item)
+		// Leírás, a csomag tartalma
+		item.description += " A csomag tartalma:<br>"
+		for _, p := range item.parts {
+			item.description += fmt.Sprintf("Parts: %g %s %s<br>", p.requiredQty, p.unit, p.partCode)
+		}
+		fmt.Printf("%d\n%s\n", item.totalPrice, item.description)
 
 	}
 	return result
