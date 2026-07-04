@@ -2,14 +2,10 @@ package models
 
 const ImagesBase = "http://localhost/product-images"
 
-const Zaradek = "<br><strong>Figyelem!</strong><br>A termékkép illusztráció, a pontos műszaki tartalmat a cikkszám és a termék megnevezése tartalmazza! Kérdés, kérés esetén hívja munkatársunkat, vagy vegye fel velünk a kapcsolatot!"
+const KiarusitasSzazalek = "5"
 
 // Ezek a termékcsoportok csak rendelésre kaphatók.
-var CsakRendelesre = []string{"FGL", "FGLPSZ", "FGLSPSZ", "CSCSGL", "CSCSGLPSZ", "CSCSGLSPSZ", "CSGL", "CSGLPSZ", "CSGLSPSZ", "MGBF"}
-
-const CsakRendelesreLeiras = "<p>Mivel a termék számos egyéb paraméterrel rendelkezik, így csak egyeztetést követően rendelhető. Kérjük, hívja munkatársunkat, vagy vegye fel a kapcsolatot velünk az elérhetőségeink valamelyikén.</p>"
-
-const JelenlegNemElerheto = "<p><strong>A termék jelenleg nincs raktáron.</strong></p>"
+var CsakRendelesre = []string{"FGL", "FGLPSZ", "FGLSPSZ", "CSCSGL", "CSCSGLPSZ", "CSCSGLSPSZ", "CSGL", "CSGLPSZ", "CSGLSPSZ"}
 
 var Sornevek = map[string]string{"1": "Egysoros", "2": "Kétsoros", "3": "Háromsoros"}
 
@@ -30,7 +26,7 @@ type PsProduct struct {
 	ID                       string `csv:"Product ID"`
 	Active                   string `csv:"Active (0/1)"`
 	Name                     string `csv:"Name *"`
-	Categories               string `csv:"Categories"` // Vessző kiszedve!
+	Categories               string `csv:"Categories"`
 	PriceTaxExcluded         string `csv:"Price tax excluded"`
 	TaxRulesID               string `csv:"Tax rules ID"`
 	WholesalePrice           string `csv:"Wholesale price"`
@@ -63,26 +59,26 @@ type PsProduct struct {
 	UnitPrice                string `csv:"Unit price"`
 	Summary                  string `csv:"Summary"`
 	Description              string `csv:"Description"`
-	Tags                     string `csv:"Tags"` // Vessző kiszedve!
+	Tags                     string `csv:"Tags"`
 	MetaTitle                string `csv:"Meta title"`
 	MetaKeywords             string `csv:"Meta keywords"`
 	MetaDescription          string `csv:"Meta description"`
 	URLRewritten             string `csv:"URL rewritten"`
 	TextInStock              string `csv:"Text when in stock"`
 	TextBackorderAllowed     string `csv:"Text when backorder allowed"`
-	AvailableForOrder        string `csv:"Available for order"` // Zárójel kiszedve!
+	AvailableForOrder        string `csv:"Available for order"`
 	ProductAvailableDate     string `csv:"Product available date"`
 	ProductCreationDate      string `csv:"Product creation date"`
-	ShowPrice                string `csv:"Show price"`             // Zárójel kiszedve!
-	ImageURLs                string `csv:"Image URLs"`             // Vessző kiszedve!
-	ImageAltTexts            string `csv:"Image alt texts"`        // Vessző kiszedve!
-	DeleteExistingImages     string `csv:"Delete existing images"` // Zárójel kiszedve!
+	ShowPrice                string `csv:"Show price"`
+	ImageURLs                string `csv:"Image URLs"`
+	ImageAltTexts            string `csv:"Image alt texts"`
+	DeleteExistingImages     string `csv:"Delete existing images"`
 	Features                 string `csv:"Feature(Name:Value:Position)"`
-	AvailableOnlineOnly      string `csv:"Available online only"` // Zárójel kiszedve!
+	AvailableOnlineOnly      string `csv:"Available online only"`
 	Condition                string `csv:"Condition"`
-	Customizable             string `csv:"Customizable"`     // Zárójel kiszedve!
-	UploadableFiles          string `csv:"Uploadable files"` // Zárójel kiszedve!
-	TextFields               string `csv:"Text fields"`      // Zárójel kiszedve!
+	Customizable             string `csv:"Customizable"`
+	UploadableFiles          string `csv:"Uploadable files"`
+	TextFields               string `csv:"Text fields"`
 	OutOfStockAction         string `csv:"Out of stock action"`
 	VirtualProduct           string `csv:"Virtual product"`
 	FileURL                  string `csv:"File URL"`
@@ -93,7 +89,7 @@ type PsProduct struct {
 	AdvancedStockManagement  string `csv:"Advanced stock management"`
 	DependsOnStock           string `csv:"Depends On Stock"`
 	Warehouse                string `csv:"Warehouse"`
-	Accessories              string `csv:"Acessories"` // Zárójel kiszedve!
+	Accessories              string `csv:"Acessories"`
 }
 
 // A Shoprenter WebShop kimenet mezői

@@ -215,6 +215,7 @@ func ProcessGl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	psp.UnitPrice = fmt.Sprintf("%.0f", p.WebPrice) // TODO
 	psp.TaxRulesID = "1"                            // ÁFA kulcs 27%
 	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
+	psp.AvailableForOrder = "1"
 	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
 	psp.Unity = "m"
 	psp.TextInStock = "m"          // méter
@@ -928,16 +929,35 @@ func ProcessGlPsz(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	if features["Erősített"] == "Igen" {
 		kemenysegTmp = "Erősített"
 	}
-	psp.Summary = fmt.Sprintf(
+
+	psp.Description = fmt.Sprintf(
 		"%s gyártmányú %s, %s mm osztású, %s mm belső hevedertávolságú, %s mm görgőátmérőjű %s szemformájú %s %s %s patentszem.",
 		psp.Manufacturer, strings.ToLower(models.Sornevek[sorokszama]),
 		features["Osztás"], features["Belső hevedertávolság"], features["Görgőátmérő"],
 		strings.ToLower(features["Szemforma"]),
 		strings.ToLower(features["Csaptípus"]), strings.ToLower(kemenysegTmp),
 		strings.ToLower(features["Anyag"]))
+
+	psp.Summary = psp.Description
+	qtyTmp, _ := strconv.ParseFloat(psp.Quantity, 64)
+	if qtyTmp == 0 {
+		// Lehet rendelni
+		psp.OutOfStockAction = "2"
+		psp.Summary += models.JelenlegNemElerheto
+		psp.Summary += "<hr>Szállítási idő: kb. 14 nap."
+	} else {
+		// Ha van raktáron, az beragadt, ezért 5%-os engedménnyel akciózzuk.
+		// psp.OnSale = "1"
+		// psp.DiscountPercent = models.KiarusitasSzazalek
+		// Most van belőle, lehet rendelni
+		psp.OutOfStockAction = "0"
+		psp.Summary += fmt.Sprintf("<hr>Készleten: %g %s", qtyTmp, psp.Unity)
+		psp.Summary += fmt.Sprintf("<hr>Súly: %s kg.", psp.Weight)
+		psp.Summary += "<hr>Szállítási idő: 1-2 nap."
+	}
+	psp.Summary = psp.Description + models.Zaradek
 	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
-	psp.MetaDescription = strings.TrimRight(psp.Summary, ".")
-	psp.Summary += models.Zaradek
+	psp.MetaDescription = strings.TrimRight(psp.Description, ".")
 
 	psp.MetaTitle = psp.Name
 	psp.URLRewritten = p.Code

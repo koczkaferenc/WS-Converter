@@ -49,6 +49,7 @@ func ProcessKs(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	psp.UnitPrice = fmt.Sprintf("%.0f", p.WebPrice) // TODO
 	psp.TaxRulesID = "1"                            // ÁFA kulcs 27%
 	psp.Quantity = fmt.Sprintf("%.1f", p.Stock)     // Mennyiség
+	psp.AvailableForOrder = "1"
 	psp.Weight = fmt.Sprintf("%.1f", p.Weight)
 	psp.Unity = "db"
 	psp.TextInStock = "db"          // darab
@@ -143,12 +144,32 @@ func ProcessKs(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	mIdTmp, _ := strconv.Atoi(manufacturerId)
 	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
 
-	psp.Summary = fmt.Sprintf("%s gyártmányú %s %s fogszámú %s fogedzett %s.",
+	psp.Description = fmt.Sprintf("%s gyártmányú %s %s fogszámú %s fogedzett %s.",
 		psp.Manufacturer, strings.ToLower(models.Sornevek[sorokszama]), features["Fogszám"], strings.ToLower(features["Fogedzett"]), strings.ToLower(features["Típus"]))
-	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
-	psp.MetaDescription = strings.TrimRight(psp.Summary, ".")
 
-	psp.Summary += "<p style='color: red;'>A lánckerék technikai furattal van ellátva. Amennyiben megmunkálva kívánja beszerezni, vegye fel a kapcsolatot a munkatársunkkal a kívánt furat méretének egyeztetése érdekében!</p>"
+	psp.Summary = psp.Description
+	qtyTmp, _ := strconv.ParseFloat(psp.Quantity, 64)
+	if qtyTmp == 0 {
+		// Lehet rendelni
+		psp.OutOfStockAction = "2"
+		psp.Summary += models.JelenlegNemElerheto
+		psp.Summary += "<hr>Szállítási idő: kb. 14 nap."
+	} else {
+		// Ha van raktáron, az beragadt, ezért 5%-os engedménnyel akciózzuk.
+		// psp.OnSale = "1"
+		// psp.DiscountPercent = models.KiarusitasSzazalek
+		// Most van belőle, lehet rendelni
+		psp.OutOfStockAction = "0"
+		psp.Summary += fmt.Sprintf("<hr>Készleten: %g %s", qtyTmp, psp.Unity)
+		psp.Summary += fmt.Sprintf("<hr>Súly: %s kg.", psp.Weight)
+		psp.Summary += "<hr>Szállítási idő: 1-2 nap."
+	}
+	psp.Summary += models.Zaradek
+
+	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
+	psp.MetaDescription = strings.TrimRight(psp.Description, ".")
+
+	psp.Summary = psp.Description + models.LanckerekZaradek
 	psp.Summary += models.Zaradek
 
 	psp.Tags = "Lánckerék"
@@ -202,134 +223,3 @@ func ProcessKs(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 
 	return psp
 }
-
-// func ProcessKs(p models.KsProduct) models.WsProduct {
-// 	var (
-// 		regExpKS   = regexp.MustCompile(`N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-// 		regExpKS_G = regexp.MustCompile(`N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
-// 		// Agyas lánckerekek
-// 		regExpKR   = regexp.MustCompile(`N-(KR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-// 		regExpKR_G = regexp.MustCompile(`N-(KR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$`)
-// 		// Sajnos ezt ebben a formában is felvitték
-// 		regExpGKR      = regexp.MustCompile(`N-(GKR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$`)
-// 		match          []string
-// 		family         string
-// 		productType    string
-// 		manufacturerId int
-// 		numOfRows      string
-// 	)
-//
-// 	w := models.WsProduct{}
-//
-// 	// KS-ek fogszáma és keménysége
-// 	// N-KS-0-08B2_Z30
-// 	// N-KS-0-08B2_Z21_G
-// 	w.SKU = p.Code
-// 	w.Quantity = fmt.Sprintf("%.1f", p.Stock)
-// 	w.Alapar = fmt.Sprintf("%.0f", p.WebPrice)
-// 	w.TaxClass = "27%"
-// 	w.QuantityUnit = p.Unit
-// 	w.Weight = fmt.Sprintf("%.1f", p.Weight)
-// 	w.WeightClass = "kg."
-//
-// 	w.Anyag = "Acél"
-// 	w.Category = "Lánckerekek"
-// 	w.ClassId = "Lánckerék"
-// 	w.LanckerekTipus = "Laplánckerék" // Agyas lánckerék |  Laplánckerék
-// 	w.Fogedzett = "Standard"          // Fogedzett | Standard
-//
-// 	// N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$
-// 	// N-KR-0-08B2_Z30
-// 	match = regExpKS.FindStringSubmatch(p.Code)
-// 	if match != nil {
-// 		family = match[1]
-// 		manufacturerId, _ = strconv.Atoi(match[2])
-// 		productType = match[3]
-// 		numOfRows = match[4]
-// 		w.Fogszam = match[5]
-// 	}
-//
-// 	// N-(KS)-([0-9])+-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$
-// 	// N-KS-0-08B2_Z21_G
-// 	match = regExpKS_G.FindStringSubmatch(p.Code)
-// 	if match != nil {
-// 		family = match[1]
-// 		manufacturerId, _ = strconv.Atoi(match[2])
-// 		productType = match[3]
-// 		numOfRows = match[4]
-// 		w.Fogszam = match[5]
-// 		w.Fogedzett = "Fogedzett"
-// 	}
-//
-// 	// N-(KR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$
-// 	// N-KR-0-08B2_Z30
-// 	match = regExpKR.FindStringSubmatch(p.Code)
-// 	if match != nil {
-// 		family = match[1]
-// 		manufacturerId, _ = strconv.Atoi(match[2])
-// 		productType = match[3]
-// 		numOfRows = match[4]
-// 		w.Fogszam = match[5]
-// 		w.LanckerekTipus = "Agyas lánckerék"
-// 	}
-//
-// 	// N-(KR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)_G$
-// 	// N-KR-0-08B2_Z21_G
-// 	match = regExpKR_G.FindStringSubmatch(p.Code)
-// 	if match != nil {
-// 		family = match[1]
-// 		manufacturerId, _ = strconv.Atoi(match[2])
-// 		productType = match[3]
-// 		numOfRows = match[4]
-// 		w.Fogszam = match[5]
-// 		w.Fogedzett = "Fogedzett"
-// 		w.LanckerekTipus = "Agyas lánckerék"
-// 	}
-//
-// 	// N-(GKR)-([0-9]+)-([0-9]+[A,B,C])([1-3])_Z([0-9]+)$
-// 	// N-GKR-0-08B2_Z30
-// 	match = regExpGKR.FindStringSubmatch(p.Code)
-// 	if match != nil {
-// 		family = match[1]
-// 		manufacturerId, _ = strconv.Atoi(match[2])
-// 		productType = match[3]
-// 		numOfRows = match[4]
-// 		w.Fogszam = match[5]
-// 		w.LanckerekTipus = "Agyas lánckerék"
-// 	}
-//
-// 	w.Manufacturer = models.Manufacturers[manufacturerId]
-// 	w.ShortDescription = fmt.Sprintf("%s gyártmányú %ssoros %s fogszámú %s %s. ",
-// 		w.Manufacturer, models.Sornevek[numOfRows], w.Fogszam, strings.ToLower(w.Fogedzett), strings.ToLower(w.LanckerekTipus))
-//
-// 	if w.LanckerekTipus == "Agyas lánckerék" {
-// 		w.ShortDescription += "<p style='color: red;'>Amennyiben a lánckereket megmunkálva kívánja beszerezni, vegye fel a kapcsolatot munkatársunkkal!</p>"
-// 	}
-//
-// 	// Ha nincs belőle raktáron, nem elérhető.
-// 	qty, _ := strconv.ParseFloat(w.Quantity, 64)
-// 	if qty == 0 {
-// 		w.ShortDescription += models.JelenlegNemElerheto
-// 	} else {
-// 		if slices.Contains(models.CsakRendelesre, family) {
-// 			w.ShortDescription += models.CsakRendelesreLeiras
-// 		}
-// 	}
-// 	w.ShortDescription += models.Zaradek
-//
-// 	if w.Name == "" {
-// 		w.Name = fmt.Sprintf("%s %s%sZ=%s %s", family, productType, numOfRows, w.Fogszam, strings.ToLower(w.LanckerekTipus))
-// 	}
-// 	if w.Fogedzett == "Fogedzett" {
-// 		w.Name += ` "G"`
-// 	}
-// 	if w.Image == "" {
-// 		w.Image = fmt.Sprintf("product/N-%s-%s.png", family, numOfRows)
-// 	}
-// 	if w.ImageAdditional == "" {
-// 		w.ImageAdditional = fmt.Sprintf("product/D-%s-%s.png", family, numOfRows)
-// 	}
-//
-// 	return w
-// }
-//

@@ -9,6 +9,7 @@ import (
 	"ws-updater/db"
 	"ws-updater/gl"
 	"ws-updater/ks"
+	"ws-updater/mgbf"
 	SpecialProducts "ws-updater/specials"
 
 	"ws-updater/models"
@@ -138,7 +139,7 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		fmt.Printf("%s\n", p.Code)
+		//fmt.Printf("%s\n", p.Code)
 		switch {
 
 		//#// TODO Mezőgazdasági láncok0
@@ -182,16 +183,18 @@ func main() {
 			psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
 			processed++
 
+		// Boronafogak
+		case regExpMGBF.MatchString(p.Code):
+			psWebProducts = append(psWebProducts, mgbf.ProcessMgbf(p, &prodCodes))
+			processed++
+
 			/*
 				// Csapkinyomók
 				case regExpCSK.MatchString(p.Code):
 					srWebProducts = append(srWebProducts, csk.ProcessCsk(p))
 					processed++
 
-				// Boronafogak
-				case regExpMGBF.MatchString(p.Code):
-					srWebProducts = append(srWebProducts, mgbf.ProcessMgbf(p))
-					processed++
+
 
 				// Flyer
 				case regExpFL.MatchString(p.Code),
