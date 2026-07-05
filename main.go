@@ -97,19 +97,6 @@ var (
 	regExpHLPSZ = regexp.MustCompile(`N-HLPSZ-[0-9]+-TM([0-9]+)$`)
 )
 
-// Shoprenter csv mentése
-// func SaveShopRenterFile(products []models.WsProduct) {
-// 	file, err := os.Create("Shoprenter.csv")
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	defer file.Close()
-// 	err = gocsv.MarshalFile(&products, file)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// }
-
 func SavePrestaFile(products []models.PsProduct) {
 	file, err := os.Create("PrestaShop.csv")
 	if err != nil {
@@ -183,6 +170,12 @@ func main() {
 			psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
 			processed++
 
+		// Flyer
+		case regExpFL.MatchString(p.Code),
+			regExpFLCS.MatchString(p.Code):
+			psWebProducts = append(psWebProducts, gl.ProcessFlyer(p, &prodCodes))
+			processed++
+
 		// Boronafogak
 		case regExpMGBF.MatchString(p.Code):
 			psWebProducts = append(psWebProducts, mgbf.ProcessMgbf(p, &prodCodes))
@@ -196,11 +189,7 @@ func main() {
 
 
 
-				// Flyer
-				case regExpFL.MatchString(p.Code),
-					regExpFLCS.MatchString(p.Code):
-					srWebProducts = append(srWebProducts, flyer.ProcessFlyer(p))
-					processed++
+
 			*/
 		default:
 			//w.WriteString("Hiba: " + p.Code + "\n")
@@ -215,4 +204,6 @@ func main() {
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)
 	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
+	//fmt.Println("Nyomj meg egy billentyűt a kilépéshez.")
+	//bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

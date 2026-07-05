@@ -169,9 +169,6 @@ func ProcessKs(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
 	psp.MetaDescription = strings.TrimRight(psp.Description, ".")
 
-	psp.Summary = psp.Description + models.LanckerekZaradek
-	psp.Summary += models.Zaradek
-
 	psp.Tags = "Lánckerék"
 	psp.MetaTitle = "Lánckerék"
 	psp.MetaKeywords = models.Sornevek[features["Fogszám"]] + "soros lánckerék"
