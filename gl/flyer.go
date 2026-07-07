@@ -89,6 +89,11 @@ func ProcessFlyer(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		features["Anyag"] = "Acél"
 		features["Osztás"] = flyerOsztasTab[match[4]]
 		features["Hevederszam"] = fmt.Sprintf("%sx%s", match[5], match[6])
+
+		psp.Unity = "db"
+		psp.TextInStock = "db"
+		psp.TextBackorderAllowed = "db"
+
 		psp.Name = fmt.Sprintf("%s Flyer Lánc Csap", pStr)
 		psp.Description = fmt.Sprintf("%s %s %s flyer lánc csap", psp.Manufacturer, kivitelkod, features["Hevederszam"])
 		psp.Tags = "Flyer lánc," + pStr

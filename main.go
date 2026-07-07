@@ -11,6 +11,7 @@ import (
 	"ws-updater/ks"
 	"ws-updater/mgbf"
 	SpecialProducts "ws-updater/specials"
+	"ws-updater/szl"
 
 	"ws-updater/models"
 
@@ -174,6 +175,15 @@ func main() {
 		case regExpFL.MatchString(p.Code),
 			regExpFLCS.MatchString(p.Code):
 			psWebProducts = append(psWebProducts, gl.ProcessFlyer(p, &prodCodes))
+			processed++
+
+		// Szemesláncok
+		case regExpSZL.MatchString(p.Code),
+			regExpSZLH.MatchString(p.Code),
+			regExpSSSZL.MatchString(p.Code),
+			regExpSZLPSZ.MatchString(p.Code),
+			regExpSZL3.MatchString(p.Code):
+			psWebProducts = append(psWebProducts, szl.ProcessSzl(p, &prodCodes))
 			processed++
 
 		// Boronafogak
