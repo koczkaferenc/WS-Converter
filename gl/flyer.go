@@ -63,7 +63,7 @@ func ProcessFlyer(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		family = match[1]
 		manufacturerId = match[2]
 		kivitelkod = match[3] // LL | BL
-		pStr = fmt.Sprintf("%s-%s-%sx%s", kivitelkod, match[4], match[5], match[6])
+		pStr = fmt.Sprintf("%s%s%s%s", kivitelkod, match[4], match[5], match[6])
 
 		features["Anyag"] = "Acél"
 		features["Osztás"] = flyerOsztasTab[match[4]]
@@ -84,7 +84,7 @@ func ProcessFlyer(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		family = match[1]
 		manufacturerId = match[2]
 		kivitelkod = match[3] // LL | BL
-		pStr = fmt.Sprintf("%s %s%s%s", kivitelkod, match[4], match[5], match[6])
+		pStr = fmt.Sprintf("%s%s%s%s", kivitelkod, match[4], match[5], match[6])
 
 		features["Anyag"] = "Acél"
 		features["Osztás"] = flyerOsztasTab[match[4]]
