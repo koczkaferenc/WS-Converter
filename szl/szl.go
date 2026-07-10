@@ -6,7 +6,6 @@ package szl
 // Szemeslánc
 import (
 	"fmt"
-	"slices"
 	"strconv"
 	"strings"
 	"ws-updater/models"
@@ -15,20 +14,21 @@ import (
 func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 
 	var (
-		match          []string
-		family         string
-		manufacturerId string
-		pStr           string
-		imageTag       string
+		match    []string
+		family   string
+		pStr     string
+		imageTag string
 	)
 
 	psp := models.PsProduct{}
 	features := map[string]string{
-		"Anyag":          "", // Acél|Rozsdamentes
-		"Felületkezelés": "", // Natúr|Horganyzott
-		"Szemforma":      "", // Csomózott|
+		"Anyag":          "",        // Acél|Rozsdamentes
+		"Felületkezelés": "",        // Natúr|Horganyzott
+		"Szemforma":      "Egyenes", // Normál|Csomózott
 		"Huzal átmérő":   "",
 		"Belső hossz":    "",
+		"Elérhető":       "Raktáron", // Keresőhöz: Raktáron | Rendelésre | Árajánlattal
+		"Méret":          "",         // Keresőhöz
 	}
 
 	psp.ID = ""            // Az ID üres, cikkszámokkal dogozunk
@@ -64,10 +64,13 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	match = regExpSZL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId = match[2]
+		mIdTmp, _ := strconv.Atoi(match[2])
+		psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+		pStr = fmt.Sprintf("%sx%s",
+			strings.ReplaceAll(match[3], ",", "."),
+			strings.ReplaceAll(match[4], ",", "."))
 
 		features["Felületkezelés"] = "Natúr" // Natúr | Horganyzott
-		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
 		features["Huzal átmérő"] = match[3]
 		features["Belső hossz"] = match[4]
 
@@ -83,11 +86,10 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 			imageTag = family
 		}
 
-		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
 			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s szemeslánc.",
 			psp.Manufacturer, features["Huzal átmérő"],
-			features["Belső hossz"], features["Szemforma"],
+			features["Belső hossz"], strings.ToLower(features["Szemforma"]),
 			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
@@ -100,19 +102,21 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	match = regExpSSSZL.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId = match[2]
+		mIdTmp, _ := strconv.Atoi(match[2])
+		psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+		pStr = fmt.Sprintf("%sx%s",
+			strings.ReplaceAll(match[3], ",", "."),
+			strings.ReplaceAll(match[4], ",", "."))
 
 		features["Anyag"] = "Rozsdamentes acél" // Acél
 		features["Felületkezelés"] = "Natúr"    // Natúr | Horganyzott
-		features["Szemforma"] = "N/A"           // Egyenes | Csomózott
 		features["Huzal átmérő"] = match[3]
 		features["Belső hossz"] = match[4]
 
-		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
 			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s szemeslánc.",
 			psp.Manufacturer, features["Huzal átmérő"],
-			features["Belső hossz"], features["Szemforma"],
+			features["Belső hossz"], strings.ToLower(features["Szemforma"]),
 			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
@@ -129,19 +133,24 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	match = regExpSZLPSZ.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId = match[2]
+		mIdTmp, _ := strconv.Atoi(match[2])
+		psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+		pStr = fmt.Sprintf("%sx%s",
+			strings.ReplaceAll(match[3], ",", "."),
+			strings.ReplaceAll(match[4], ",", "."))
 
-		features["Anyag"] = "Acél"                  // Acél
-		features["Felületkezelés"] = "Rozsdamentes" // Natúr | Horganyzott
-		features["Szemforma"] = "N/A"               // Egyenes | Csomózott
+		features["Anyag"] = "Rozsdamentes"   // Acél
+		features["Felületkezelés"] = "Natúr" // Natúr | Horganyzott
 		features["Huzal átmérő"] = match[3]
 		features["Belső hossz"] = match[4]
 
-		psp.Name = p.Name
+		psp.Unity = "db"
+		psp.TextInStock = "db"
+		psp.TextBackorderAllowed = "db"
 		psp.Description = fmt.Sprintf(
 			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s patentszem.",
 			psp.Manufacturer, features["Huzal átmérő"],
-			features["Belső hossz"], features["Szemforma"],
+			features["Belső hossz"], strings.ToLower(features["Szemforma"]),
 			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
@@ -157,18 +166,20 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	match = regExpSZL3.FindStringSubmatch(p.Code)
 	if match != nil {
 		family = match[1]
-		manufacturerId = match[2]
+		mIdTmp, _ := strconv.Atoi(match[2])
+		psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+		pStr = fmt.Sprintf("%sx%s",
+			strings.ReplaceAll(match[3], ",", "."),
+			strings.ReplaceAll(match[4], ",", "."))
 
 		features["Felületkezelés"] = "Natúr" // Natúr | Horganyzott
-		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
 		features["Huzal átmérő"] = match[3]
 		features["Belső hossz"] = match[4]
 
-		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
 			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s bányalánc.",
 			psp.Manufacturer, features["Huzal átmérő"],
-			features["Belső hossz"], features["Szemforma"],
+			features["Belső hossz"], strings.ToLower(features["Szemforma"]),
 			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
@@ -178,51 +189,34 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		imageTag = family
 	}
 
-	// ********************************************
-	// További paraméterek beállítása
+	//***************************************************
 
-	// Gyártó beállítása
-	mIdTmp, _ := strconv.Atoi(manufacturerId)
-	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
+	psp.Name = p.Name
+	features["Méret"] = pStr
 
-	psp.Summary = psp.Description
-	qtyTmp, _ := strconv.ParseFloat(psp.Quantity, 64)
-	if qtyTmp == 0 {
-		// Lehet rendelni
-		psp.OutOfStockAction = "2"
-		psp.Summary += models.JelenlegNemElerheto
-		psp.Summary += "<hr>A szállítási határidőről egyeztessen munkatársunkkal!"
-	} else {
-		// Ha van raktáron, az beragadt, ezért 5%-os engedménnyel akciózzuk.
-		// psp.OnSale = "1"
-		// psp.DiscountPercent = models.KiarusitasSzazalek
-		// Most van belőle, lehet rendelni
-		psp.OutOfStockAction = "0"
-		psp.Summary += fmt.Sprintf("<hr>Készleten: %g %s", qtyTmp, psp.Unity)
-		psp.Summary += fmt.Sprintf("<hr>Súly: %s kg.", psp.Weight)
-		psp.Summary += "<hr>Szállítási idő: 1-2 nap."
+	// Termék elérhetőség és üzenetek beállítása
+	models.SetLabels(&psp, features, family)
+
+	// Csomózott? Sajnos csak a névből derül ki
+	if strings.Contains(strings.ToLower(psp.Name), "csomózott") {
+		features["Szemforma"] = "Csomózott"
 	}
-	psp.Summary += models.Zaradek
-	// Ebben a fázisában kell beállítani és nem lehet pont a végén.
-	psp.MetaDescription = strings.TrimRight(psp.Description, ".")
-	psp.MetaTitle = psp.Name
-	psp.URLRewritten = p.Code
 
-	// Speciális tulajdonságok beállítása
-	psp.Features = models.MkFeaturesList(features)
-
-	// Képek előállítása (a Velonál egyedileg készült)
+	// Képek beállítása
 	if psp.ImageURLs == "" && imageTag != "" {
-		if features["Szemforma"] != "Csomózott" {
+		//fmt.Println(features["Szemforma"], imageTag)
+		if features["Szemforma"] == "Csomózott" {
+			psp.ImageURLs = fmt.Sprintf(
+				"%s/N-%s_csomozott.png,%s/D-%s_csomozott.png",
+				models.ImagesBase, imageTag,
+				models.ImagesBase, imageTag)
+
+		} else {
 			psp.ImageURLs = fmt.Sprintf(
 				"%s/N-%s.png,%s/D-%s.png",
 				models.ImagesBase, imageTag,
 				models.ImagesBase, imageTag)
-		} else {
-			psp.ImageURLs = fmt.Sprintf(
-				"%s/N-%s-csomozott.png,%s/D-%s-csomozott.png",
-				models.ImagesBase, imageTag,
-				models.ImagesBase, imageTag)
+
 		}
 		psp.ImageAltTexts = psp.Name
 	}
@@ -233,26 +227,8 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	//rgxStr := fmt.Sprintf(`^N-GL-[0-9]+-%s%s.*`, productType, sorokszama)
 	//psp.Accessories += models.getRelatedProductIds(rgxStr, prodCodes)
 
-	// Rendelhető?
-	psp.AvailableForOrder = "1"
-	if slices.Contains(models.CsakRendelesre, family) {
-		psp.AvailableForOrder = "0"
-	}
-
-	//fmt.Printf("Szl: %s %s %s\n", p.Code, p.Name, psp.ImageURLs)
-	//fmt.Printf("Szl: %s: %s %s \n", imageTag, p.Code, p.Name)
-
-	// Ha nincs ára, akkor csak rendelésre
-	if psp.UnitPrice == "0" && psp.Quantity == "0.0" {
-		psp.ShowPrice = "0"
-		psp.AvailableForOrder = "1"
-		fmt.Printf("Z-0-0: %-20s %8s Ft. %6s m\n", p.Code, psp.UnitPrice, psp.Quantity)
-	}
-
-	// Ha nincs ára, de van belőle, rendelhető
-	if psp.UnitPrice == "0" && psp.Quantity != "0.0" {
-		fmt.Printf("Z-0-1: %-20s %8s Ft. %6s m\n", p.Code, psp.UnitPrice, psp.Quantity)
-	}
+	// Speciális tulajdonságok beállítása
+	psp.Features = models.MkFeaturesList(features)
 
 	return psp
 

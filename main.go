@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	"os"
 	"regexp"
 	"ws-updater/db"
@@ -203,6 +204,7 @@ func main() {
 			*/
 		default:
 			//w.WriteString("Hiba: " + p.Code + "\n")
+			fmt.Println(p.Code)
 			ignored++
 		}
 
@@ -213,7 +215,7 @@ func main() {
 
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)
-	// fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
+	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
 	//fmt.Println("Nyomj meg egy billentyűt a kilépéshez.")
 	//bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

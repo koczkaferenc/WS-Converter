@@ -135,18 +135,34 @@ type WsProduct struct {
 }
 
 // Gyártók
+// var Manufacturers = map[int]string{
+// 	0:  "Prémium",      // Renold
+// 	1:  "Távol-keleti", // MSC
+// 	2:  "Távol-keleti", // Lovas
+// 	3:  "Távol-keleti", // TEC
+// 	4:  "Európai",      // Codex
+// 	5:  "Európai",      // Vamberk
+// 	6:  "Európai",      // Strakonice
+// 	7:  "Prémium",      // Rexnord
+// 	8:  "Európai",      // Link-Belt
+// 	9:  "Európai",      // Retezarna
+// 	10: "Európai",      // Reiter
+// 	11: "Távol-keleti",
+// 	12: "AL",
+// }
+
 var Manufacturers = map[int]string{
-	0:  "Prémium",      // Renold
-	1:  "Távol-keleti", // MSC
-	2:  "Távol-keleti", // Lovas
-	3:  "Távol-keleti", // TEC
-	4:  "Európai",      // Codex
-	5:  "Európai",      // Vamberk
-	6:  "Európai",      // Strakonice
-	7:  "Prémium",      // Rexnord
-	8:  "Európai",      // Link-Belt
-	9:  "Európai",      // Retezarna
-	10: "Európai",      // Reiter
+	0:  "Renold",
+	1:  "MSC",
+	2:  "Lovas",
+	3:  "TEC",
+	4:  "Codex",
+	5:  "Vamberk",
+	6:  "Strakonice",
+	7:  "Rexnord",
+	8:  "Link-Belt",
+	9:  "Retezarna",
+	10: "Reiter",
 	11: "Távol-keleti",
 	12: "AL",
 }
