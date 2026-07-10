@@ -20,18 +20,15 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		manufacturerId string
 		pStr           string
 		imageTag       string
-		//kulsoMagassag  string
-
 	)
 
 	psp := models.PsProduct{}
 	features := map[string]string{
 		"Anyag":          "", // Acél|Rozsdamentes
-		"Feluletkezeles": "", // Natúr|Horganyzott
+		"Felületkezelés": "", // Natúr|Horganyzott
 		"Szemforma":      "", // Csomózott|
-		"HuzalAtmero":    "",
-		"BelsoHossz":     "",
-		"KulsoMagassag":  "",
+		"Huzal átmérő":   "",
+		"Belső hossz":    "",
 	}
 
 	psp.ID = ""            // Az ID üres, cikkszámokkal dogozunk
@@ -69,15 +66,14 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		family = match[1]
 		manufacturerId = match[2]
 
-		features["Feluletkezeles"] = "Natúr" // Natúr | Horganyzott
+		features["Felületkezelés"] = "Natúr" // Natúr | Horganyzott
 		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
-		features["HuzalAtmero"] = match[3]
-		features["BelsoHossz"] = match[4]
-		features["KulsoMagassag"] = ""
+		features["Huzal átmérő"] = match[3]
+		features["Belső hossz"] = match[4]
 
 		// Ha H-ra végződik, horganyzott
 		if match[5] == "H" {
-			features["Feluletkezeles"] = "Horganyzott"
+			features["Felületkezelés"] = "Horganyzott"
 			imageTag = "SZL_H"
 			psp.Tags = "Horganyzott,Szemeslánc," + pStr
 			psp.MetaKeywords = pStr + ",horganyzott,szemeslánc"
@@ -89,10 +85,10 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 
 		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
-			"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s szemeslánc.",
-			psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
-			features["KulsoMagassag"], features["Szemforma"],
-			strings.ToLower(features["Feluletkezeles"]),
+			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s szemeslánc.",
+			psp.Manufacturer, features["Huzal átmérő"],
+			features["Belső hossz"], features["Szemforma"],
+			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
 	}
@@ -107,18 +103,17 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		manufacturerId = match[2]
 
 		features["Anyag"] = "Rozsdamentes acél" // Acél
-		features["Feluletkezeles"] = "Natúr"    // Natúr | Horganyzott
+		features["Felületkezelés"] = "Natúr"    // Natúr | Horganyzott
 		features["Szemforma"] = "N/A"           // Egyenes | Csomózott
-		features["HuzalAtmero"] = match[3]
-		features["BelsoHossz"] = match[4]
-		features["KulsoMagassag"] = ""
+		features["Huzal átmérő"] = match[3]
+		features["Belső hossz"] = match[4]
 
 		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
-			"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s szemeslánc.",
-			psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
-			features["KulsoMagassag"], features["Szemforma"],
-			strings.ToLower(features["Feluletkezeles"]),
+			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s szemeslánc.",
+			psp.Manufacturer, features["Huzal átmérő"],
+			features["Belső hossz"], features["Szemforma"],
+			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
 
@@ -137,18 +132,17 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		manufacturerId = match[2]
 
 		features["Anyag"] = "Acél"                  // Acél
-		features["Feluletkezeles"] = "Rozsdamentes" // Natúr | Horganyzott
+		features["Felületkezelés"] = "Rozsdamentes" // Natúr | Horganyzott
 		features["Szemforma"] = "N/A"               // Egyenes | Csomózott
-		features["HuzalAtmero"] = match[3]
-		features["BelsoHossz"] = match[4]
-		features["KulsoMagassag"] = ""
+		features["Huzal átmérő"] = match[3]
+		features["Belső hossz"] = match[4]
 
 		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
-			"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s patentszem.",
-			psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
-			features["KulsoMagassag"], features["Szemforma"],
-			strings.ToLower(features["Feluletkezeles"]),
+			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s patentszem.",
+			psp.Manufacturer, features["Huzal átmérő"],
+			features["Belső hossz"], features["Szemforma"],
+			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
 
@@ -165,18 +159,17 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		family = match[1]
 		manufacturerId = match[2]
 
-		features["Feluletkezeles"] = "Natúr" // Natúr | Horganyzott
+		features["Felületkezelés"] = "Natúr" // Natúr | Horganyzott
 		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
-		features["HuzalAtmero"] = match[3]
-		features["BelsoHossz"] = match[4]
-		features["KulsoMagassag"] = ""
+		features["Huzal átmérő"] = match[3]
+		features["Belső hossz"] = match[4]
 
 		psp.Name = p.Name
 		psp.Description = fmt.Sprintf(
-			"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s bányalánc.",
-			psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
-			features["KulsoMagassag"], features["Szemforma"],
-			strings.ToLower(features["Feluletkezeles"]),
+			"%s gyártmányú, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s szemformájú, %s felületű, %s bányalánc.",
+			psp.Manufacturer, features["Huzal átmérő"],
+			features["Belső hossz"], features["Szemforma"],
+			strings.ToLower(features["Felületkezelés"]),
 			strings.ToLower(features["Anyag"]),
 		)
 
@@ -192,20 +185,13 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	mIdTmp, _ := strconv.Atoi(manufacturerId)
 	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
 
-	psp.Description = fmt.Sprintf(
-		"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s %s szemeslánc.",
-		psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
-		features["KulsoMagassag"], features["Szemforma"],
-		strings.ToLower(features["Feluletkezeles"]),
-		strings.ToLower(features["Anyag"]))
-
 	psp.Summary = psp.Description
 	qtyTmp, _ := strconv.ParseFloat(psp.Quantity, 64)
 	if qtyTmp == 0 {
 		// Lehet rendelni
 		psp.OutOfStockAction = "2"
 		psp.Summary += models.JelenlegNemElerheto
-		psp.Summary += "<hr>Szállítási idő: kb. 14 nap."
+		psp.Summary += "<hr>A szállítási határidőről egyeztessen munkatársunkkal!"
 	} else {
 		// Ha van raktáron, az beragadt, ezért 5%-os engedménnyel akciózzuk.
 		// psp.OnSale = "1"
@@ -256,6 +242,53 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	//fmt.Printf("Szl: %s %s %s\n", p.Code, p.Name, psp.ImageURLs)
 	//fmt.Printf("Szl: %s: %s %s \n", imageTag, p.Code, p.Name)
 
+	// Ha nincs ára, akkor csak rendelésre
+	if psp.UnitPrice == "0" && psp.Quantity == "0.0" {
+		psp.ShowPrice = "0"
+		psp.AvailableForOrder = "1"
+		fmt.Printf("Z-0-0: %-20s %8s Ft. %6s m\n", p.Code, psp.UnitPrice, psp.Quantity)
+	}
+
+	// Ha nincs ára, de van belőle, rendelhető
+	if psp.UnitPrice == "0" && psp.Quantity != "0.0" {
+		fmt.Printf("Z-0-1: %-20s %8s Ft. %6s m\n", p.Code, psp.UnitPrice, psp.Quantity)
+	}
+
 	return psp
 
 }
+
+/*
+
+Ezeket be lehetne árazni:
+Z-0-1: N-SZLPSZ-0-8x24             0 Ft.   11.0 m
+Z-0-1: N-SZLPSZ-0-9x27             0 Ft.   14.0 m
+Z-0-1: N-SZL-0-1,8x25_H            0 Ft.    5.0 m
+Z-0-1: N-SZLPSZ-0-10x28            0 Ft.    6.0 m
+Z-0-1: N-SZLPSZ-0-11x31            0 Ft.    2.0 m
+Z-0-1: N-SZL-0-3x26_H              0 Ft.   23.0 m
+Z-0-1: N-SZL-0-3x16_H              0 Ft.    0.5 m
+Z-0-1: N-SZL-0-3,1x41_H            0 Ft.   39.0 m
+Z-0-1: N-SZL-0-4x32_H              0 Ft.   31.2 m
+Z-0-1: N-SZL-0-4x19_H              0 Ft.   42.6 m
+Z-0-1: N-SZL-9-5x18,5              0 Ft.   53.0 m
+Z-0-1: N-SZL-0-5x35_H              0 Ft.   34.0 m
+Z-0-1: N-SZL-0-6x42_H              0 Ft.    4.0 m
+Z-0-1: N-SZL-0-8x52_H              0 Ft.   20.2 m
+Z-0-1: N-SZL-11-8x31               0 Ft.  238.0 m
+Z-0-1: N-SZL-11-11x31              0 Ft. 2953.5 m
+Z-0-1: N-SZL-11-13x82              0 Ft.   98.5 m
+
+{if $product.quantity <= 0}
+        {if !$product.allow_oosp}
+            <li class="product-flag call-to-order">
+                <i class="fa fa-phone"></i> Hívjon minket!
+            </li>
+        {else}
+            <li class="product-flag order-on-demand">
+                <i class="fa fa-shopping-cart"></i> Csak rendelésre!
+            </li>
+        {/if}
+    {/if}
+
+*/

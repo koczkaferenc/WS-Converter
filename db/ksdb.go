@@ -34,8 +34,8 @@ func FetchProducts() ([]models.KsProduct, []string) {
 				0) -- Ha a SUM NULL-t adna vissza, legyen 0
 			AS DOUBLE PRECISION) AS "Menny",
 		    QU."Name" AS "Unit",
-		    CAST(MAX(CASE WHEN PRP."Price" > 0 THEN PRP."Price" ELSE NULL END) AS DOUBLE PRECISION) AS "WebPrice",
-		    CAST(MIN(CASE WHEN PRP."Price" > 0 THEN PRP."Price" ELSE NULL END) AS DOUBLE PRECISION) AS "ReSellerPrice"
+		    CAST(MAX(CASE WHEN PRP."Price" > 0 THEN PRP."Price" ELSE 0 END) AS DOUBLE PRECISION) AS "WebPrice",
+		    CAST(MIN(CASE WHEN PRP."Price" > 0 THEN PRP."Price" ELSE 0 END) AS DOUBLE PRECISION) AS "ReSellerPrice"
 		FROM "Product" PR
 		LEFT JOIN "QuantityUnit" QU ON QU."Id" = PR."QuantityUnit"
 		LEFT JOIN "PriceRuleDetail" PRD ON PRD."Product" = PR."Id"
@@ -47,7 +47,7 @@ func FetchProducts() ([]models.KsProduct, []string) {
 			PR."Code" LIKE 'N-%' AND
 			PR."OutGoingProduct" = 0
 		GROUP BY 1, 2, 3, 4, 6
-		HAVING MAX(PRP."Price") > 0
+		--- HAVING MAX(PRP."Price") > 0
 		ORDER BY "Weight"`
 
 	rows, err := db.Query(sql)

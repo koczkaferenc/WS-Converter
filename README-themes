@@ -1,0 +1,22 @@
+themes/classic/templates/catalog/_partials/product-flags.tpl:
+
+{block name='product_flags'}
+    <ul class="product-flags js-product-flags">
+        {foreach from=$product.flags item=flag}
+            <li class="product-flag {$flag.type}">{$flag.label}</li>
+        {/foreach}
+
+        {if $product.quantity == 0 }
+            {if $product.price_amount > 0}
+                <li class="product-flag">Rendelhető</li>
+            {else}
+                <li class="product-flag">Hívjon!</li>
+            {/if}
+        {else}
+            {if $product.price_amount == "0.00"}
+                <li class="product-flag">Hívjon!</li>
+            {/if}
+        {/if}
+    </ul>
+
+{/block}

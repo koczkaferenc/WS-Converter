@@ -3,13 +3,9 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
-	"fmt"
 	"os"
 	"regexp"
 	"ws-updater/db"
-	"ws-updater/gl"
-	"ws-updater/ks"
-	"ws-updater/mgbf"
 	"ws-updater/szl"
 
 	"ws-updater/models"
@@ -137,7 +133,6 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		fmt.Printf("%s\n", p.Code)
 		switch {
 		// Lánckerekek
 		case regExpKS.MatchString(p.Code),
@@ -145,7 +140,7 @@ func main() {
 			regExpKR.MatchString(p.Code),
 			regExpKR_G.MatchString(p.Code),
 			regExpGKR.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, ks.ProcessKs(p, &prodCodes))
+			//psWebProducts = append(psWebProducts, ks.ProcessKs(p, &prodCodes))
 			processed++
 
 		// GL
@@ -156,7 +151,7 @@ func main() {
 			regExpGLVELO.MatchString(p.Code),
 			regExpCSCSGL.MatchString(p.Code),
 			regExpPPGL.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, gl.ProcessGl(p, &prodCodes))
+			//psWebProducts = append(psWebProducts, gl.ProcessGl(p, &prodCodes))
 			processed++
 
 		// GLPSZ
@@ -173,13 +168,13 @@ func main() {
 			regExpGLHOKVELO.MatchString(p.Code),
 			regExpCSCSGLPSZ.MatchString(p.Code),
 			regExpPPGLPSZ.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
+			//psWebProducts = append(psWebProducts, gl.ProcessGlPsz(p, &prodCodes))
 			processed++
 
 		// Flyer
 		case regExpFL.MatchString(p.Code),
 			regExpFLCS.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, gl.ProcessFlyer(p, &prodCodes))
+			//psWebProducts = append(psWebProducts, gl.ProcessFlyer(p, &prodCodes))
 			processed++
 
 		// Szemesláncok
@@ -193,7 +188,7 @@ func main() {
 
 		// Boronafogak
 		case regExpMGBF.MatchString(p.Code):
-			psWebProducts = append(psWebProducts, mgbf.ProcessMgbf(p, &prodCodes))
+			//psWebProducts = append(psWebProducts, mgbf.ProcessMgbf(p, &prodCodes))
 			processed++
 
 			/*
@@ -218,7 +213,7 @@ func main() {
 
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)
-	fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
+	// fmt.Printf("Feldolgozva: %d, Kihagyva: %d\n", processed, ignored)
 	//fmt.Println("Nyomj meg egy billentyűt a kilépéshez.")
 	//bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

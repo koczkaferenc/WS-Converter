@@ -116,7 +116,7 @@ func ProcessFlyer(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		// Lehet rendelni
 		psp.OutOfStockAction = "2"
 		psp.Summary += models.JelenlegNemElerheto
-		psp.Summary += "<hr>Szállítási idő: kb. 14 nap."
+		psp.Summary += "<hr>A szállítási határidőről egyeztessen munkatársunkkal!"
 	} else {
 		// Ha van raktáron, az beragadt, ezért 5%-os engedménnyel akciózzuk.
 		// psp.OnSale = "1"
