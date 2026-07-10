@@ -72,17 +72,28 @@ var (
 
 	// ----- ITT TARTUNK ------------------------------------------------------------------------
 
-	// Szemeslánc
-	// Nem felületkezelt szemeslánc
-	regExpSZL = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
-	// Horganyzott szemeslánc
-	regExpSZLH = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+	// 	// Szemeslánc
+	// 	// Nem felületkezelt szemeslánc
+	// 	regExpSZL = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	// 	// Horganyzott szemeslánc
+	// 	regExpSZLH = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+	// 	// Rozsdamentes szemeslánc
+	// 	regExpSSSZL = regexp.MustCompile(`N-SSSZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+	// 	// Szemeslánc patentszeme
+	// 	regExpSZLPSZ = regexp.MustCompile(`N-SZLPSZ-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	// 	// Nem felületkezelt szemes bányalánc patentszem 3 mérettel
+	// 	regExpSZL3 = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	// Horganyzott vagy natúr szemeslánc
+	// regExpSZL = regexp.MustCompile(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	regExpSZL = regexp.MustCompile(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)(?:_(H))?$`)
+	// Ez nincs külön, összevontuk, Horganyzott szemeslánc
+	// regExpSZLH = regexp.MustCompil(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
 	// Rozsdamentes szemeslánc
-	regExpSSSZL = regexp.MustCompile(`N-SSSZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+	regExpSSSZL = regexp.MustCompile(`N-(SSSZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
 	// Szemeslánc patentszeme
-	regExpSZLPSZ = regexp.MustCompile(`N-SZLPSZ-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	regExpSZLPSZ = regexp.MustCompile(`N-(SZLPSZ)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
 	// Nem felületkezelt szemes bányalánc patentszem 3 mérettel
-	regExpSZL3 = regexp.MustCompile(`N-SZL-[0-9]+-(\d+(?:,\d)?)x(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	regExpSZL3 = regexp.MustCompile(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
 
 	// Mezőgazdasági lánc
 	regExpMGGL = regexp.MustCompile(`N-MGGL-([0-9]+)-([0-9]+)x([0-9]+)x([0-9]+)_M([0-9]+)_([A-Z]+)$`)
@@ -126,14 +137,9 @@ func main() {
 	processed := 0
 	ignored := 0
 	for _, p := range products {
-		//fmt.Printf("%s\n", p.Code)
+		fmt.Printf("%s\n", p.Code)
 		switch {
-
-		//#// TODO Mezőgazdasági láncok0
-		//#case regExpMGGL.MatchString(p.Code):0
-		//#	srWebProducts = append(srWebProducts, mggl.ProcessMggl(p))0
-		//#	processed++0
-		//#// Agyas és lemez lánckerekek0
+		// Lánckerekek
 		case regExpKS.MatchString(p.Code),
 			regExpKS_G.MatchString(p.Code),
 			regExpKR.MatchString(p.Code),
@@ -178,7 +184,7 @@ func main() {
 
 		// Szemesláncok
 		case regExpSZL.MatchString(p.Code),
-			regExpSZLH.MatchString(p.Code),
+			//regExpSZLH.MatchString(p.Code),
 			regExpSSSZL.MatchString(p.Code),
 			regExpSZLPSZ.MatchString(p.Code),
 			regExpSZL3.MatchString(p.Code):
