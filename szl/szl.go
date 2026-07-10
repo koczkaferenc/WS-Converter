@@ -57,6 +57,7 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 	psp.DiscountTo = ""            // TODO
 	psp.DeleteExistingImages = "0" // TODO
 
+	// ********************************************
 	// N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`
 	// N-SZL-9-3x16
 	// Nem felületkezelt szemeslánc
@@ -66,8 +67,8 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		manufacturerId = match[2]
 
 		features["Anyag"] = "Acél"           // Acél | Rozsdamentes
-		features["Feluletkezeles"] = "Natúr" // Natúr | Horganyzott
-		features["Szemforma"] = "Csomózott"  // Egyenes | Csomózott
+		features["Feluletkezeles"] = "Natúr" // Natúr | Horganyzott | Rozsdamentes
+		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
 		features["HuzalAtmero"] = match[3]
 		features["BelsoHossz"] = match[4]
 		features["KulsoMagassag"] = ""
@@ -78,20 +79,121 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		psp.Tags = "Szemeslánc," + pStr
 		psp.MetaKeywords = pStr + ",szemeslánc"
 		imageTag = "SZL"
-
+		imageTag = match[1]
 	}
+
+	// ********************************************
+	// Horganyzott szemeslánc
+	// regExpSZLH = regexp.MustCompile(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+
+	match = regExpSZLH.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId = match[2]
+
+		features["Anyag"] = "Acél"                 // Acél | Rozsdamentes
+		features["Feluletkezeles"] = "Horganyzott" // Natúr | Horganyzott | Rozsdamentes
+		features["Szemforma"] = "N/A"              // Egyenes | Csomózott
+		features["HuzalAtmero"] = match[3]
+		features["BelsoHossz"] = match[4]
+		features["KulsoMagassag"] = ""
+
+		psp.Name = p.Name
+		psp.Description = fmt.Sprintf("%s %s %s szemeslánc", psp.Manufacturer, features["Szemforma"], p.Name)
+
+		psp.Tags = "Horganyzott,Szemeslánc," + pStr
+		psp.MetaKeywords = pStr + ",horganyzott,szemeslánc"
+		imageTag = "SZLH"
+		imageTag = match[1]
+	}
+
+	// ********************************************
+	// Rozsdamentes szemeslánc
+	// regExpSSSZL = regexp.MustCompile(`N-(SSSZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)_(H)$`)
+
+	match = regExpSSSZL.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId = match[2]
+
+		features["Anyag"] = "Acél"                  // Acél | Rozsdamentes
+		features["Feluletkezeles"] = "Rozsdamentes" // Natúr | Horganyzott | Rozsdamentes
+		features["Szemforma"] = "N/A"               // Egyenes | Csomózott
+		features["HuzalAtmero"] = match[3]
+		features["BelsoHossz"] = match[4]
+		features["KulsoMagassag"] = ""
+
+		psp.Name = p.Name
+		psp.Description = fmt.Sprintf("%s %s %s szemeslánc", psp.Manufacturer, features["Szemforma"], p.Name)
+
+		psp.Tags = "rozsdamentes,saválló,Szemeslánc," + pStr
+		psp.MetaKeywords = pStr + ",rozsdamentes,saválló,szemeslánc"
+		imageTag = "SSSZL"
+		imageTag = match[1]
+	}
+
+	// ********************************************
+	// Szemeslánc patentszeme
+	// regExpSZLPSZ = regexp.MustCompile(`N-(SZLPSZ)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+
+	match = regExpSZLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId = match[2]
+
+		features["Anyag"] = "Acél"                  // Acél | Rozsdamentes
+		features["Feluletkezeles"] = "Rozsdamentes" // Natúr | Horganyzott | Rozsdamentes
+		features["Szemforma"] = "N/A"               // Egyenes | Csomózott
+		features["HuzalAtmero"] = match[3]
+		features["BelsoHossz"] = match[4]
+		features["KulsoMagassag"] = ""
+
+		psp.Name = p.Name
+		psp.Description = fmt.Sprintf("%s %s %s szemeslánc patentszem", psp.Manufacturer, features["Szemforma"], p.Name)
+
+		psp.Tags = "rozsdamentes,saválló,Szemeslánc patentszem," + pStr
+		psp.MetaKeywords = pStr + ",rozsdamentes,saválló,szemeslánc patentszem"
+		imageTag = "SZLPSZ"
+		imageTag = match[1]
+	}
+
+	// ********************************************
+	// Nem felületkezelt szemes bányalánc patentszem 3 mérettel
+	// regExpSZL3 = regexp.MustCompile(`N-(SZL)-([0-9]+)-(\d+(?:,\d)?)x(\d+(?:,\d)?)x(\d+(?:,\d)?)$`)
+	match = regExpSZLPSZ.FindStringSubmatch(p.Code)
+	if match != nil {
+		family = match[1]
+		manufacturerId = match[2]
+
+		features["Anyag"] = "Acél"           // Acél | Rozsdamentes
+		features["Feluletkezeles"] = "Natúr" // Natúr | Horganyzott | Rozsdamentes
+		features["Szemforma"] = "N/A"        // Egyenes | Csomózott
+		features["HuzalAtmero"] = match[3]
+		features["BelsoHossz"] = match[4]
+		features["KulsoMagassag"] = ""
+
+		psp.Name = p.Name
+		psp.Description = fmt.Sprintf("%s %s %s bányalánc patentszem", psp.Manufacturer, features["Szemforma"], p.Name)
+
+		psp.Tags = "bányalánc,patentszem," + pStr
+		psp.MetaKeywords = pStr + ",bányalánc patentszem"
+		imageTag = "SZLPSZ"
+		imageTag = match[1]
+	}
+
+	// ********************************************
+	// További paraméterek beállítása
 
 	// Gyártó beállítása
 	mIdTmp, _ := strconv.Atoi(manufacturerId)
 	psp.Manufacturer, _ = models.Manufacturers[mIdTmp]
 
-	// psp.Description = fmt.Sprintf(
-	// 	"%s gyártmányú %s, %s mm osztású, %s mm belső hevedertávolságú, %s mm görgőátmérőjű %s szemformájú %s %s %s patentszem.",
-	// 	psp.Manufacturer, strings.ToLower(models.Sornevek[sorokszama]),
-	// 	features["Osztás"], features["Belső hevedertávolság"], features["Görgőátmérő"],
-	// 	strings.ToLower(features["Szemforma"]),
-	// 	strings.ToLower(features["Csaptípus"]), strings.ToLower(kemenysegTmp),
-	// 	strings.ToLower(features["Anyag"]))
+	psp.Description = fmt.Sprintf(
+		"%s gyártmányú %s, %s mm huzalátmérőjű, %s mm belső hosszúságú, %s mm külső magasságú %s szemformájú %s %s %s szemeslánc.",
+		psp.Manufacturer, features["HuzalAtmero"], features["BelsoHossz"],
+		features["KulsoMagassag"], features["Szemforma"],
+		strings.ToLower(features["Feluletkezeles"]),
+		strings.ToLower(features["Anyag"]))
 
 	psp.Summary = psp.Description
 	qtyTmp, _ := strconv.ParseFloat(psp.Quantity, 64)
@@ -121,7 +223,7 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 
 	// Képek előállítása (a Velonál egyedileg készült)
 	if psp.ImageURLs == "" && imageTag != "" {
-		if features["Szemforma"] == "Csomózott" {
+		if features["Szemforma"] != "Csomózott" {
 			psp.ImageURLs = fmt.Sprintf(
 				"%s/N-%s.png,%s/D-%s.png",
 				models.ImagesBase, imageTag,
@@ -147,7 +249,8 @@ func ProcessSzl(p models.KsProduct, prodCodes *[]string) models.PsProduct {
 		psp.AvailableForOrder = "0"
 	}
 
-	fmt.Printf("Szl: %s %s %s\n", p.Code, p.Name, psp.ImageURLs)
+	//fmt.Printf("Szl: %s %s %s\n", p.Code, p.Name, psp.ImageURLs)
+	fmt.Printf("Szl: %s: %s %s \n", imageTag, p.Code, p.Name)
 
 	return psp
 

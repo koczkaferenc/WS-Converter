@@ -10,7 +10,6 @@ import (
 	"ws-updater/gl"
 	"ws-updater/ks"
 	"ws-updater/mgbf"
-	SpecialProducts "ws-updater/specials"
 	"ws-updater/szl"
 
 	"ws-updater/models"
@@ -209,7 +208,7 @@ func main() {
 	}
 
 	// Komplex termékek, termékcsomagok képzése
-	psWebProducts = append(psWebProducts, SpecialProducts.ProcessSpecialProducts(psWebProducts)...)
+	//psWebProducts = append(psWebProducts, SpecialProducts.ProcessSpecialProducts(psWebProducts)...)
 
 	// SaveShopRenterFile(srWebProducts)
 	SavePrestaFile(psWebProducts)
